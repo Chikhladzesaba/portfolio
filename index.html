@@ -60,8 +60,9 @@
     .container { width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
     section.container { margin-top: var(--section-gap); }
 
-    /* ---------- Header (scrolls away with the page) ---------- */
-    .header { position: absolute; inset: 0 0 auto 0; z-index: 50; }
+    /* ---------- Header (hides when scrolling down, comes back when scrolling up) ---------- */
+    .header { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: transform .4s ease; }
+    .header.hide { transform: translateY(-100%); }
     .header .container { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; padding-bottom: 24px; }
     .brand { display: flex; gap: 14px; align-items: baseline; font-size: 20px; }
     .brand em { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
@@ -149,14 +150,14 @@
     .statement.in .ch { opacity: 1; transform: none; }
 
     /* ---------- Strengths (moving strip) ---------- */
-    .marquee { overflow: hidden; margin-top: 60px; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+    .marquee { overflow: hidden; margin-top: 160px; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
     .marquee-track { display: flex; gap: 16px; width: max-content; animation: marquee 40s linear infinite; }
     .marquee:hover .marquee-track { animation-play-state: paused; }
     @keyframes marquee { to { transform: translateX(calc(-50% - 8px)); } }
     .strength {
       width: 400px; height: 232px; flex: none;
       border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 30px; display: flex; flex-direction: column; justify-content: space-between;
+      padding: 30px; display: flex; flex-direction: column; justify-content: flex-start; gap: 32px;
     }
     .strength svg { width: 34px; height: 34px; color: var(--accent); }
     .strength p { font-size: 32px; }
@@ -425,7 +426,7 @@
     let n = 0;
     st.setAttribute("aria-label", st.textContent);
     st.innerHTML = st.textContent.split(" ").map(w =>
-      `<span class="word" aria-hidden="true">${[...w].map(c => `<span class="ch" style="transition-delay:${(n++ * 0.015).toFixed(3)}s">${esc(c)}</span>`).join("")}</span>`
+      `<span class="word" aria-hidden="true">${[...w].map(c => `<span class="ch" style="transition-delay:${(n++ * 0.004).toFixed(3)}s">${esc(c)}</span>`).join("")}</span>`
     ).join(" ");
 
     // ---- Strengths strip (content repeated for a seamless loop) ----
@@ -453,8 +454,17 @@
     // ---- Section labels fade in too ----
     document.querySelectorAll(".label").forEach(el => el.classList.add("reveal"));
 
-    // ---- Small delay between items that appear together (tools, highlights) ----
-    document.querySelectorAll(".tools .tool, .highlights .hl-card").forEach((el, i) => {
+    // ---- Header: hide when scrolling down, show when scrolling up ----
+    const header = document.querySelector(".header");
+    let lastY = window.scrollY;
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+      header.classList.toggle("hide", y > lastY && y > 100);
+      lastY = y;
+    }, { passive: true });
+
+    // ---- Small delay between highlight cards that appear together ----
+    document.querySelectorAll(".highlights .hl-card").forEach((el, i) => {
       el.style.transitionDelay = `${(i % 4) * 0.08}s`;
     });
 
