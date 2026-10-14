@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trainings &amp; Lectures | Saba Chikhladze</title>
+  <meta name="description" content="Trainings &amp; Lectures">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Trainings &amp; Lectures | Saba Chikhladze">
+  <meta property="og:description" content="Trainings &amp; Lectures">
+  <meta property="og:image" content="https://chikhladzesaba.github.io/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/images/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+
+  <style>
+    /* Case-study page. Sizes measured from the original Framer site.
+       Screen sizes: desktop 1100px and up, tablet 768–1099px, phone under 768px. */
+    :root {
+      --ink: #1a1b22;
+      --accent: #006aff;
+      --badge: #f7fbff;      /* light blue background (stats box) */
+      --bg: #ffffff;
+      --font-regular: "PP Neue Montreal Regular", "Inter Tight", system-ui, sans-serif;
+      --font-medium: "PP Neue Montreal Medium", "Inter Tight", system-ui, sans-serif;
+      --font-serif: "Tiempos Headline Light Italic", "Instrument Serif", Georgia, serif;
+      --max: 1800px;         /* width of the content */
+      --text-max: 1200px;    /* width of the text blocks */
+      --gutter: 80px;        /* space at the screen edges */
+      --block-gap: 160px;    /* space between blocks */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg); color: var(--ink); font-family: var(--font-regular);
+      font-size: 18px; line-height: 1.1; letter-spacing: -.01em;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* ---------- Header (hides when scrolling down, comes back when scrolling up) ---------- */
+    .header { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: transform .4s ease; }
+    .header.hide { transform: translateY(-100%); }
+    .header .container { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; padding-bottom: 24px; }
+    .brand { display: flex; gap: 14px; align-items: baseline; font-size: 20px; }
+    .brand em { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
+    .pill { background: var(--ink); color: #fff; border-radius: 999px; padding: 8px 16px; transition: transform .2s ease; }
+    .pill:hover { transform: scale(1.05); }
+
+    /* ---------- Page content ---------- */
+    main.container { padding-top: 160px; display: grid; gap: var(--block-gap); }
+
+    .intro { max-width: 800px; display: grid; gap: 80px; }
+    .facts { display: flex; gap: 120px; }
+    .facts div { display: grid; gap: 8px; }
+    .facts dd { font-family: var(--font-medium); font-weight: 500; }
+    h1 { font-family: var(--font-medium); font-weight: 500; font-size: 64px; }
+
+    .hero { border-radius: 24px; overflow: hidden; height: 900px; position: relative; }
+    .hero img { position: absolute; left: -5%; top: -5%; width: 110%; height: 110%; max-width: none; object-fit: cover; will-change: transform; }
+
+    .text { max-width: var(--text-max); margin: 0 auto; width: 100%; display: grid; gap: 48px; }
+    .text p { font-size: 24px; white-space: pre-wrap; }
+    .text h2 { font-family: var(--font-medium); font-weight: 500; font-size: 32px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; justify-self: start;
+      background: #f0f0f0; color: var(--ink); padding: 16px 32px; border-radius: 64px;
+      font-family: var(--font-medium); font-weight: 500; transition: transform .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); background: #e3e3e3; }
+    .btn svg { width: 16px; height: 16px; }
+    .gallery { display: grid; gap: 40px; }
+    .photo { border-radius: 24px; overflow: hidden; height: 800px; position: relative; }
+    .photo img { position: absolute; left: -5%; top: -5%; width: 110%; height: 110%; max-width: none; object-fit: cover; }
+
+    .stats { background: var(--badge); border-radius: 30px; padding: 80px 20px; }
+    .stats-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: center; }
+    .stat { display: grid; gap: 10px; }
+    .stat p { font-size: 22px; }
+    .stat strong { font-family: var(--font-medium); font-weight: 500; font-size: 64px; }
+
+    /* ---------- Footer (same as homepage) ---------- */
+    footer { background: var(--ink); color: #fff; margin-top: 240px; }
+    footer .container { min-height: 720px; padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; justify-content: space-between; gap: 80px; }
+    .footer-top { display: flex; justify-content: space-between; gap: 40px; }
+    .footer-top .kicker { margin-bottom: 16px; }
+    .footer-top h2 { font-family: var(--font-medium); font-weight: 500; font-size: 40px; }
+    .cta {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 64px;
+      background: #fff; color: var(--ink); padding: 10px 18px; border-radius: 999px;
+      font-family: var(--font-medium); font-weight: 500; transition: transform .2s ease;
+    }
+    .cta:hover { transform: translateY(-2px); }
+    .footer-links { display: flex; gap: 24px 60px; font-family: var(--font-medium); font-weight: 500; }
+    .footer-links ul { list-style: none; display: grid; gap: 10px; align-content: start; }
+    .footer-links a { opacity: .6; transition: opacity .2s ease; }
+    .footer-links a:hover { opacity: 1; }
+    .footer-bottom { color: #8b8d96; }
+    .footer-bottom em { font-family: var(--font-serif); }
+
+    /* ---------- Scroll animations ----------
+       .reveal = fade in and slide from the right; .reveal.up = slide up (big image) */
+    .reveal { opacity: 0; transform: perspective(1200px) translateX(30px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+    .reveal.up { transform: perspective(1200px) translateY(30px); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ---------- Tablet ---------- */
+    @media (max-width: 1099px) {
+      :root { --gutter: 64px; --block-gap: 120px; }
+      h1 { font-size: 52px; }
+      .hero { height: 600px; }
+      .photo { height: 500px; }
+      .text p { font-size: 22px; }
+      .text h2 { font-size: 26px; }
+      .stat strong { font-size: 52px; }
+      .footer-top { flex-direction: column; }
+      footer { margin-top: 160px; }
+      footer .container { min-height: 0; padding-top: 64px; padding-bottom: 64px; }
+    }
+
+    /* ---------- Phone ---------- */
+    @media (max-width: 767px) {
+      :root { --gutter: 16px; --block-gap: 80px; }
+      main.container { padding-top: 120px; }
+      .header .container { padding-top: 16px; padding-bottom: 16px; }
+      .brand { font-size: 16px; gap: 8px; }
+      .pill { font-size: 16px; padding: 6px 14px; }
+      .intro { gap: 48px; }
+      .facts { flex-direction: column; gap: 12px; }
+      .facts div { display: flex; justify-content: space-between; }
+      h1 { font-size: 32px; }
+      .hero { height: 350px; border-radius: 12px; }
+      .photo { height: 250px; border-radius: 12px; }
+      .gallery { gap: 16px; }
+      .text p { font-size: 20px; }
+      .text h2 { font-size: 22px; }
+      .stats { padding: 48px 16px; }
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat strong { font-size: 40px; }
+      .footer-links { flex-wrap: wrap; }
+      footer .container { padding-top: 48px; padding-bottom: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <a href="/" class="brand"><span><em>Career</em> highlights</span><span>©2025</span></a>
+      <a class="pill" href="https://www.linkedin.com/in/sabachikhladze/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="intro">
+      <dl class="facts reveal">
+        <div><dt>Industry</dt><dd>Education</dd></div>
+        <div><dt>Objective</dt><dd>Skill Sharing</dd></div>
+      </dl>
+      <h1 class="reveal">Trainings &amp; Lectures</h1>
+    </div>
+
+    <div class="hero reveal up"><img src="/images/trainings-lectures.avif" alt=""></div>
+
+    <div class="text reveal">
+      <p>While gaining hands-on experience working with different brands as a consultant and team member, I found great satisfaction in helping others grow and improve their skills, especially in digital media, marketing, and audience development. I particularly enjoyed supporting small initiatives outside major cities, which led me to travel across Georgia to organize dedicated workshops and training sessions.
+
+I was invited to lecture at universities, training centers, and various international programs. To enhance the learning experience, I used tools like Google Classroom for lectures, Miro and Jamboard for collaboration, and organized meetings via Zoom and Teams. Through these experiences, I refined my workshop development skills and created numerous syllabi for students and industry professionals.</p>
+    </div>
+
+    <div class="text reveal">
+      <h2>Achievements</h2>
+      <p>Over the years, I have delivered more than 150 sessions to students and professionals from various countries. My focus has always been on teaching practical skills that can be applied immediately.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stats-inner">
+        <div class="stat"><p>Sessions</p><strong>150+</strong></div>
+        <div class="stat"><p>Years</p><strong>5+</strong></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <p class="kicker">Have something in mind?</p>
+          <h2>Feel Free to Reach Out</h2>
+          <a class="cta" href="mailto:sabachikhladze@outlook.com">Let's talk
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+        <div class="footer-links">
+          <ul>
+            <li><a href="/work/hackathon/">Chatbot Hackathon</a></li>
+            <li><a href="/work/trainings-lectures/">Trainings &amp; Lectures</a></li>
+            <li><a href="/work/beer-georgia/">SM Strategy: Beer Georgia</a></li>
+            <li><a href="/work/web-growth/">Web Transformation</a></li>
+          </ul>
+          <ul><li><a href="https://www.linkedin.com/in/sabachikhladze/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
+        </div>
+      </div>
+      <p class="footer-bottom">©2025 | Saba Chikhladze <em>Career</em> Highlights</p>
+    </div>
+  </footer>
+
+  <script>
+    // ---- Header: hide when scrolling down, show when scrolling up ----
+    const header = document.querySelector(".header");
+    let lastY = window.scrollY;
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+      header.classList.toggle("hide", y > lastY && y > 100);
+      lastY = y;
+    }, { passive: true });
+
+    // ---- Big images: move slightly slower than the page (parallax) ----
+    const bigImages = document.querySelectorAll(".hero img, .photo img");
+    const moveHero = () => bigImages.forEach(img => {
+      const r = img.parentElement.getBoundingClientRect();
+      const progress = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
+      img.style.transform = `translateY(${(progress * -4).toFixed(2)}%)`;
+    });
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.addEventListener("scroll", moveHero, { passive: true });
+      moveHero();
+    }
+
+    // ---- Scroll reveal: add "in" when an element comes into view ----
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
