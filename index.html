@@ -13,7 +13,7 @@
   <link rel="icon" href="images/favicon.png">
 
   <!--
-    Fonts: the live site uses PP Neue Montreal + Tiempos Headline (commercial).
+    Fonts: the Framer site used PP Neue Montreal + Tiempos Headline (commercial).
     Free look-alikes are loaded here. If you have the licensed files, add
     @font-face rules and put their names first in the --font-* variables.
   -->
@@ -22,20 +22,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 
   <style>
+    /* All sizes below are measured from the original Framer site.
+       Screen sizes: desktop 1100px and up, tablet 768–1099px, phone under 768px. */
     :root {
       --ink: #1a1b22;
-      --muted: #6b6d76;
-      --line: #e6e7eb;
-      --card-border: #dbe3ef;
       --accent: #006aff;
+      --border: #c5dcf0;     /* light blue borders on boxes */
+      --badge: #f7fbff;      /* background of the date badges */
+      --grey: #969696;       /* location text */
+      --line: #e6e7eb;       /* divider lines */
       --bg: #ffffff;
       --font-regular: "PP Neue Montreal Regular", "Inter Tight", system-ui, sans-serif;
       --font-medium: "PP Neue Montreal Medium", "Inter Tight", system-ui, sans-serif;
       --font-bold: "Neue Montreal Bold", "Inter Tight", system-ui, sans-serif;
       --font-serif: "Tiempos Headline Light Italic", "Instrument Serif", Georgia, serif;
-      --radius: 16px;
-      --max: 1900px;
-      --gutter: 50px;
+      --radius: 20px;
+      --max: 1800px;         /* width of the content */
+      --gutter: 80px;        /* space at the screen edges */
+      --section-gap: 160px;  /* space between sections */
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,179 +48,199 @@
       background: var(--bg);
       color: var(--ink);
       font-family: var(--font-regular);
+      font-size: 18px;
+      line-height: 1.1;
+      letter-spacing: -.01em;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
 
-    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
-    section.container { margin-top: 140px; }
+    .container { width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
+    section.container { margin-top: var(--section-gap); }
 
-    /* ---------- Header ---------- */
-    .header {
-      position: absolute; inset: 0 0 auto 0; z-index: 50;
-      mix-blend-mode: difference; color: #fff;
-    }
-    .header .container {
-      display: flex; justify-content: space-between; align-items: center;
-      height: 66px;
-    }
-    .brand { display: flex; gap: 10px; align-items: baseline; font-size: 18px; letter-spacing: -.01em; }
+    /* ---------- Header (scrolls away with the page) ---------- */
+    .header { position: absolute; inset: 0 0 auto 0; z-index: 50; }
+    .header .container { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; padding-bottom: 24px; }
+    .brand { display: flex; gap: 14px; align-items: baseline; font-size: 20px; }
     .brand em { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
-    .brand .year { margin-left: 8px; }
     .pill {
-      background: #fff; color: #000; border-radius: 999px;
-      padding: 6px 12px; font-size: 14px; transition: transform .2s ease;
+      background: var(--ink); color: #fff; border-radius: 999px;
+      padding: 8px 16px; font-size: 18px; transition: transform .2s ease;
     }
     .pill:hover { transform: scale(1.05); }
 
-    /* ---------- Section label ---------- */
+    /* ---------- Section label: blue dot + text ---------- */
     .label {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: var(--accent); font-family: var(--font-bold); font-weight: 600; font-size: 14px;
-      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 6px; padding: 10px 0; margin-bottom: 14px;
+      color: var(--accent); font-family: var(--font-bold); font-weight: 600; font-size: 18px; letter-spacing: 0;
     }
     .label::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
 
     /* ---------- Overview ---------- */
-    #overview { margin-top: 0; padding-top: 88px; }
-    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    #overview { margin-top: 0; padding-top: 103px; }
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .overview-photo { border-radius: var(--radius); overflow: hidden; aspect-ratio: 2.1 / 1; }
     .overview-photo img { width: 100%; height: 100%; object-fit: cover; }
     .overview-card {
-      border: 1px solid var(--card-border); border-radius: var(--radius);
-      padding: 22px 22px 22px; display: flex; flex-direction: column; justify-content: space-between;
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 30px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
     }
-    .overview-card p.lead { font-size: 32px; line-height: 1.1; letter-spacing: -.01em; max-width: 30ch; }
-    .who strong { display: block; font-family: var(--font-bold); font-weight: 600; font-size: 18px; margin-bottom: 8px; }
-    .who span { font-size: 15px; }
+    .overview-card p.lead { font-size: 32px; max-width: 30ch; }
+    .who strong { display: block; font-family: var(--font-bold); font-weight: 600; letter-spacing: 0; margin-bottom: 8px; }
 
-    /* ---------- Expertise accordion ---------- */
-    .accordion { border-top: 0; }
+    /* ---------- Areas of Expertise (click to open) ---------- */
     .acc-item { border-bottom: 1px solid var(--line); }
     .acc-item:last-child { border-bottom: 0; }
     .acc-btn {
-      width: 100%; display: flex; justify-content: space-between; align-items: center;
+      width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 24px;
       background: none; border: 0; cursor: pointer; text-align: left; color: inherit;
-      padding: 14px 0; font-family: var(--font-medium); font-weight: 500;
+      padding: 24px 0; font-family: var(--font-medium); font-weight: 500;
       font-size: 40px; line-height: 1.1; letter-spacing: -.01em;
     }
-    .acc-btn svg { width: 22px; height: 22px; flex: none; transition: transform .35s ease; }
+    .acc-btn svg { width: 24px; height: 24px; flex: none; transition: transform .35s ease; }
     .acc-item.open .acc-btn svg { transform: rotate(180deg); }
     .acc-panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s ease; }
     .acc-item.open .acc-panel { grid-template-rows: 1fr; }
     .acc-panel > div { overflow: hidden; }
-    .acc-panel ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 4px 0 22px; }
+    .acc-panel ul { list-style: none; display: grid; gap: 16px; padding: 0 0 32px; }
     .acc-panel li {
-      font-size: 16px; padding: 8px 14px; border-radius: 999px;
-      background: #f3f5f9; color: var(--ink);
+      font-family: var(--font-medium); font-weight: 500; font-size: 24px;
+      opacity: 0; transition: opacity .4s ease;
     }
+    .acc-item.open .acc-panel li { opacity: 1; transition-delay: .15s; }
 
     /* ---------- Highlights ---------- */
     .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 24px; }
     .hl-card { display: block; }
-    .hl-media { border-radius: var(--radius); overflow: hidden; aspect-ratio: 620 / 549; }
+    .hl-media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 1.7 / 1; }
     .hl-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
-    .hl-card:hover .hl-media img { transform: scale(1.04); }
-    .hl-card h3 { font-family: var(--font-regular); font-weight: 400; font-size: 18px; margin-top: 16px; }
+    .hl-card:hover .hl-media img { transform: scale(1.06); }
+    .hl-arrow {
+      position: absolute; left: 20px; bottom: 20px; width: 40px; height: 40px; border-radius: 50%;
+      background: #fff; color: var(--ink); display: grid; place-items: center;
+      opacity: 0; transform: scale(.8); transition: opacity .3s ease, transform .3s ease;
+    }
+    .hl-arrow svg { width: 16px; height: 16px; }
+    .hl-card:hover .hl-arrow { opacity: 1; transform: none; }
+    .hl-card h3 { font-family: var(--font-medium); font-weight: 500; font-size: 24px; margin-top: 24px; }
 
     /* ---------- Skills & Tools ---------- */
     .tools {
-      border: 1px solid var(--line); border-radius: var(--radius);
-      display: grid; grid-template-columns: repeat(4, 1fr); row-gap: 40px;
-      padding: 60px 20px;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      display: grid; grid-template-columns: repeat(4, 1fr); row-gap: 60px; padding: 100px 0;
     }
-    .tool { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
-    .tool img, .tool .ai { width: 60px; height: 60px; border-radius: 12px; }
+    .tool { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+    .tool img, .tool .ai { width: 60px; height: 60px; border-radius: 10px; }
     .tool .ai {
       background: #330000; color: #ff9a00; display: grid; place-items: center;
       font: 600 26px/1 var(--font-medium);
     }
-    .tool p { font-family: var(--font-bold); font-weight: 600; font-size: 15px; }
+    .tool p { font-family: var(--font-bold); font-weight: 600; letter-spacing: 0; }
 
-    .statement {
-      font-family: var(--font-medium); font-weight: 500;
-      font-size: 64px; line-height: 1.1; letter-spacing: -.01em; max-width: 22ch;
+    /* ---------- Statement (appears letter by letter) ---------- */
+    .statement { font-family: var(--font-medium); font-weight: 500; font-size: 64px; }
+    .statement .word { display: inline-block; white-space: nowrap; }
+    .statement .ch {
+      display: inline-block; opacity: 0; transform: translateX(50px);
+      transition: opacity .5s ease, transform .6s cubic-bezier(.2,.7,.2,1);
     }
+    .statement.in .ch { opacity: 1; transform: none; }
 
-    /* ---------- Strengths marquee ---------- */
-    .marquee { overflow: hidden; margin-top: 120px; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
-    .marquee-track { display: flex; gap: 20px; width: max-content; animation: marquee 40s linear infinite; }
+    /* ---------- Strengths (moving strip) ---------- */
+    .marquee { overflow: hidden; margin-top: 60px; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+    .marquee-track { display: flex; gap: 16px; width: max-content; animation: marquee 40s linear infinite; }
     .marquee:hover .marquee-track { animation-play-state: paused; }
-    @keyframes marquee { to { transform: translateX(calc(-50% - 10px)); } }
+    @keyframes marquee { to { transform: translateX(calc(-50% - 8px)); } }
     .strength {
-      width: 330px; min-height: 172px; flex: none;
-      border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 30px;
+      width: 400px; height: 232px; flex: none;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 30px; display: flex; flex-direction: column; justify-content: space-between;
     }
-    .strength svg { width: 24px; height: 24px; color: var(--accent); }
-    .strength p { font-size: 24px; line-height: 1.1; letter-spacing: -.01em; }
+    .strength svg { width: 34px; height: 34px; color: var(--accent); }
+    .strength p { font-size: 32px; }
 
     /* ---------- Experience ---------- */
-    .experience { border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 60px; }
-    .exp { display: grid; grid-template-columns: 70px 1fr; gap: 28px; padding: 30px 0; }
-    .exp + .exp { border-top: 0; }
-    .exp-logo { width: 70px; height: 70px; border-radius: 8px; object-fit: cover; }
+    .experience {
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 30px;
+      display: grid; gap: 60px;
+    }
+    .exp { display: grid; grid-template-columns: 70px 1fr; gap: 30px; align-items: start; }
+    .exp-logo { width: 70px; height: 70px; border-radius: 7px; object-fit: cover; }
     .exp-logo.text { display: grid; place-items: center; font: 700 13px/1 var(--font-bold); letter-spacing: -.02em; }
-    .exp h3 { font-family: var(--font-bold); font-weight: 600; font-size: 18px; margin-bottom: 6px; }
-    .role + .role { margin-top: 18px; }
-    .role .title { font-size: 16px; }
-    .role .dates { color: var(--accent); font-size: 16px; margin: 6px 0 0 8px; }
-    .role .place { color: var(--muted); font-size: 14px; margin-top: 8px; }
+    .exp-body { display: grid; gap: 20px; }
+    .role { display: grid; gap: 6px; justify-items: start; }
+    .exp h3 { font-family: var(--font-bold); font-weight: 600; font-size: 18px; letter-spacing: 0; }
+    .role .dates { color: var(--accent); background: var(--badge); border-radius: 6px; padding: 6px; }
+    .role .place { color: var(--grey); }
 
     /* ---------- Footer ---------- */
-    footer { background: var(--ink); color: #fff; margin-top: 150px; padding: 50px 0 50px; }
-    .footer-top { display: grid; grid-template-columns: 1fr auto; gap: 40px; }
-    .footer-top .kicker { font-size: 16px; margin-bottom: 16px; }
-    .footer-top h2 { font-family: var(--font-medium); font-weight: 500; font-size: 40px; letter-spacing: -.01em; }
+    footer { background: var(--ink); color: #fff; margin-top: var(--section-gap); }
+    footer .container { min-height: 720px; padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; justify-content: space-between; gap: 80px; }
+    .footer-top { display: flex; justify-content: space-between; gap: 40px; }
+    .footer-top .kicker { margin-bottom: 16px; }
+    .footer-top h2 { font-family: var(--font-medium); font-weight: 500; font-size: 40px; }
     .cta {
-      display: inline-flex; align-items: center; gap: 8px; margin-top: 44px;
-      background: #fff; color: var(--ink); padding: 10px 18px; border-radius: 999px; font-size: 15px;
-      transition: transform .2s ease;
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 64px;
+      background: #fff; color: var(--ink); padding: 10px 18px; border-radius: 999px;
+      font-family: var(--font-medium); font-weight: 500; transition: transform .2s ease;
     }
     .cta:hover { transform: translateY(-2px); }
-    .footer-links { display: grid; grid-template-columns: auto auto auto; gap: 0 60px; font-size: 15px; }
+    .footer-links { display: flex; gap: 24px 60px; font-family: var(--font-medium); font-weight: 500; }
     .footer-links ul { list-style: none; display: grid; gap: 10px; align-content: start; }
-    .footer-links a:hover { opacity: .6; }
-    .footer-bottom { margin-top: 240px; font-size: 14px; color: #8b8d96; }
+    .footer-links a { opacity: .6; transition: opacity .2s ease; }
+    .footer-links a:hover { opacity: 1; }
+    .footer-bottom { color: #8b8d96; }
     .footer-bottom em { font-family: var(--font-serif); }
 
-    /* ---------- Reveal animation ---------- */
-    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+    /* ---------- Scroll animations ----------
+       .reveal = fade in and slide from the right (most sections)
+       .reveal.up = fade in and slide up (highlight cards) */
+    .reveal { opacity: 0; transform: perspective(1200px) translateX(30px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+    .reveal.up { transform: perspective(1200px) translateY(30px); }
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
+      .reveal, .statement .ch { opacity: 1; transform: none; transition: none; }
       .marquee-track { animation: none; }
     }
 
-    /* ---------- Responsive ---------- */
-    @media (max-width: 1000px) {
-      :root { --gutter: 24px; }
-      .header .container { padding: 0 var(--gutter); }
-      .overview-card { min-height: 320px; }
-      .acc-btn { font-size: 30px; }
-      .statement { font-size: 44px; }
-      .experience { padding: 10px 28px; }
-      .footer-top { grid-template-columns: 1fr; }
+    /* ---------- Tablet ---------- */
+    @media (max-width: 1099px) {
+      :root { --gutter: 64px; --section-gap: 120px; }
+      .overview-photo { aspect-ratio: auto; height: 461px; }
+      .overview-card p.lead, .strength p { font-size: 26px; }
+      .acc-btn, .footer-top h2 { font-size: 32px; }
+      .acc-panel li, .hl-card h3 { font-size: 22px; }
+      .statement { font-size: 52px; }
+      .footer-top { flex-direction: column; }
+      footer .container { min-height: 0; padding-top: 64px; padding-bottom: 64px; }
     }
-    @media (max-width: 720px) {
-      :root { --gutter: 16px; }
-      section.container { margin-top: 90px; }
-      css
-      .overview-photo { aspect-ratio: 636 / 432; }
+
+    /* ---------- Phone ---------- */
+    @media (max-width: 767px) {
+      :root { --gutter: 16px; --section-gap: 80px; }
+      #overview { padding-top: 90px; }
+      .header .container { padding-top: 16px; padding-bottom: 16px; }
+      .brand { font-size: 16px; gap: 8px; }
+      .pill { font-size: 16px; padding: 6px 14px; }
       .overview-grid, .highlights { grid-template-columns: 1fr; }
-      .overview-card p.lead { font-size: 26px; }
-      .acc-btn { font-size: 24px; }
-      .tools { grid-template-columns: repeat(2, 1fr); padding: 40px 12px; }
-      .statement { font-size: 34px; }
-      .strength { width: 260px; }
-      .strength p { font-size: 20px; }
+      .overview-photo { height: 343px; }
+      .overview-card { order: -1; min-height: 343px; }
+      .overview-card p.lead, .strength p { font-size: 22px; }
+      .acc-btn, .footer-top h2 { font-size: 26px; }
+      .acc-panel li, .hl-card h3 { font-size: 20px; }
+      .hl-media { aspect-ratio: auto; height: 300px; }
+      .tools { grid-template-columns: repeat(2, 1fr); border: 0; border-radius: 0; padding: 0; row-gap: 40px; }
+      .statement { font-size: 32px; }
+      .marquee { margin-top: 48px; }
+      .strength { width: 280px; height: 200px; padding: 24px; }
+      .experience { border: 0; border-radius: 0; padding: 0; gap: 40px; }
       .exp { grid-template-columns: 50px 1fr; gap: 16px; }
       .exp-logo { width: 50px; height: 50px; }
-      .footer-top h2 { font-size: 30px; }
-      .footer-links { grid-template-columns: 1fr 1fr; gap: 24px; }
-      .footer-bottom { margin-top: 120px; }
+      .exp-logo.text { font-size: 9px; }
+      .footer-links { flex-wrap: wrap; }
+      footer .container { padding-top: 48px; padding-bottom: 48px; }
     }
   </style>
 </head>
@@ -257,19 +281,19 @@
     <section id="highlights" class="container">
       <div class="label">Highlights</div>
       <div class="highlights">
-        <a class="hl-card reveal" href="/work/hackathon/">
+        <a class="hl-card reveal up" href="/work/hackathon/">
           <div class="hl-media"><img src="images/hackathon.avif" alt=""></div>
           <h3>Chatbot Hackathon</h3>
         </a>
-        <a class="hl-card reveal" href="https://sabachikhladze.com/work/web-growth">
+        <a class="hl-card reveal up" href="https://sabachikhladze.com/work/web-growth">
           <div class="hl-media"><img src="images/web-growth.avif" alt=""></div>
           <h3>Web Growth Strategy</h3>
         </a>
-        <a class="hl-card reveal" href="https://sabachikhladze.com/work/beer-georgia">
+        <a class="hl-card reveal up" href="https://sabachikhladze.com/work/beer-georgia">
           <div class="hl-media"><img src="images/beer-georgia.avif" alt=""></div>
           <h3>Community-Led Growth Strategy</h3>
         </a>
-        <a class="hl-card reveal" href="https://sabachikhladze.com/work/trainings-lectures">
+        <a class="hl-card reveal up" href="https://sabachikhladze.com/work/trainings-lectures">
           <div class="hl-media"><img src="images/trainings-lectures.avif" alt=""></div>
           <h3>Trainings &amp; Lectures</h3>
         </a>
@@ -279,20 +303,20 @@
     <!-- Skills & Tools -->
     <section id="tools" class="container">
       <div class="label">Skills &amp; Tools</div>
-      <div class="tools reveal">
-        <div class="tool"><img src="images/emplifi.avif" alt=""><p>Emplifi</p></div>
-        <div class="tool"><img src="images/google-analytics.avif" alt=""><p>Google Analytics 4</p></div>
-        <div class="tool"><img src="images/chartbeat.avif" alt=""><p>Chartbeat</p></div>
-        <div class="tool"><img src="images/adobe-analytics.avif" alt=""><p>Adobe Analytics</p></div>
-        <div class="tool"><img src="images/jira.avif" alt=""><p>Jira</p></div>
-        <div class="tool"><img src="images/microsoft-planner.avif" alt=""><p>Microsoft Planner</p></div>
-        <div class="tool"><img src="images/zapier.avif" alt=""><p>Zapier</p></div>
-        <div class="tool"><div class="ai" aria-hidden="true">Ai</div><p>Adobe Illustrator</p></div>
+      <div class="tools">
+        <div class="tool reveal"><img src="images/emplifi.avif" alt=""><p>Emplifi</p></div>
+        <div class="tool reveal"><img src="images/google-analytics.avif" alt=""><p>Google Analytics 4</p></div>
+        <div class="tool reveal"><img src="images/chartbeat.avif" alt=""><p>Chartbeat</p></div>
+        <div class="tool reveal"><img src="images/adobe-analytics.avif" alt=""><p>Adobe Analytics</p></div>
+        <div class="tool reveal"><img src="images/jira.avif" alt=""><p>Jira</p></div>
+        <div class="tool reveal"><img src="images/microsoft-planner.avif" alt=""><p>Microsoft Planner</p></div>
+        <div class="tool reveal"><img src="images/zapier.avif" alt=""><p>Zapier</p></div>
+        <div class="tool reveal"><div class="ai" aria-hidden="true">Ai</div><p>Adobe Illustrator</p></div>
       </div>
     </section>
 
     <section class="container">
-      <p class="statement reveal">I use analytics and product tools to understand user behavior, optimize digital platforms, and drive measurable growth.</p>
+      <p class="statement" id="statement">I use analytics and product tools to understand user behavior, optimize digital platforms, and drive measurable growth.</p>
     </section>
 
     <!-- Strengths marquee -->
@@ -303,7 +327,7 @@
     <!-- Experience -->
     <section id="experience" class="container">
       <div class="label">Experience</div>
-      <div class="experience reveal" id="experience-list"></div>
+      <div class="experience" id="experience-list"></div>
     </section>
   </main>
 
@@ -372,8 +396,9 @@
     ];
 
     const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>';
 
-    // ---- Accordion ----
+    // ---- Accordion: sub-items are a plain list, open on click ----
     const acc = document.getElementById("accordion");
     acc.innerHTML = expertise.map(([title, items]) => `
       <div class="acc-item reveal">
@@ -392,21 +417,32 @@
       if (open) { item.classList.add("open"); btn.setAttribute("aria-expanded", "true"); }
     });
 
-    // ---- Marquee (content duplicated for a seamless loop) ----
+    // ---- Highlights: add the round arrow that appears on hover ----
+    document.querySelectorAll(".hl-media").forEach(m => m.insertAdjacentHTML("beforeend", `<span class="hl-arrow" aria-hidden="true">${arrow}</span>`));
+
+    // ---- Statement: split into letters so they can appear one by one ----
+    const st = document.getElementById("statement");
+    let n = 0;
+    st.setAttribute("aria-label", st.textContent);
+    st.innerHTML = st.textContent.split(" ").map(w =>
+      `<span class="word" aria-hidden="true">${[...w].map(c => `<span class="ch" style="transition-delay:${(n++ * 0.015).toFixed(3)}s">${esc(c)}</span>`).join("")}</span>`
+    ).join(" ");
+
+    // ---- Strengths strip (content repeated for a seamless loop) ----
     const card = ([k, t]) => `<div class="strength"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icon[k]}</svg><p>${esc(t)}</p></div>`;
     const once = strengths.concat(strengths).map(card).join("");
     document.getElementById("marquee").innerHTML = once + once;
 
-    // ---- Experience ----
+    // ---- Experience: each job is its own block so they appear one after another ----
     document.getElementById("experience-list").innerHTML = experience.map(x => `
-      <div class="exp">
+      <div class="exp reveal">
         ${x.logo
           ? `<img class="exp-logo" src="images/${x.logo}" alt="">`
           : `<div class="exp-logo text">FREELANCE</div>`}
-        <div>
-          <h3>${esc(x.org)}</h3>
-          ${x.roles.map(([t, d, p]) => `
+        <div class="exp-body">
+          ${x.roles.map(([t, d, p], i) => `
             <div class="role">
+              ${i === 0 ? `<h3>${esc(x.org)}</h3>` : ""}
               <div class="title">${esc(t)}</div>
               <div class="dates">${d}</div>
               ${p ? `<div class="place">${p}</div>` : ""}
@@ -414,11 +450,19 @@
         </div>
       </div>`).join("");
 
-    // ---- Scroll reveal ----
+    // ---- Section labels fade in too ----
+    document.querySelectorAll(".label").forEach(el => el.classList.add("reveal"));
+
+    // ---- Small delay between items that appear together (tools, highlights) ----
+    document.querySelectorAll(".tools .tool, .highlights .hl-card").forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 0.08}s`;
+    });
+
+    // ---- Scroll reveal: add "in" when an element comes into view ----
     const io = new IntersectionObserver(entries => {
       entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
     }, { threshold: 0.12 });
-    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+    document.querySelectorAll(".reveal, .statement").forEach(el => io.observe(el));
   </script>
 </body>
 </html>
