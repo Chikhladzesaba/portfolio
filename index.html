@@ -34,7 +34,7 @@
       --font-bold: "Neue Montreal Bold", "Inter Tight", system-ui, sans-serif;
       --font-serif: "Tiempos Headline Light Italic", "Instrument Serif", Georgia, serif;
       --radius: 16px;
-      --max: 1340px;
+      --max: 1900px;
       --gutter: 50px;
     }
 
@@ -60,7 +60,7 @@
     }
     .header .container {
       display: flex; justify-content: space-between; align-items: center;
-      height: 66px; max-width: none; padding: 0 var(--gutter) 0 62px;
+      height: 66px;
     }
     .brand { display: flex; gap: 10px; align-items: baseline; font-size: 18px; letter-spacing: -.01em; }
     .brand em { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
@@ -82,7 +82,7 @@
     /* ---------- Overview ---------- */
     #overview { margin-top: 0; padding-top: 88px; }
     .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .overview-photo { border-radius: var(--radius); overflow: hidden; aspect-ratio: 636 / 432; }
+    .overview-photo { border-radius: var(--radius); overflow: hidden; aspect-ratio: 2.1 / 1; }
     .overview-photo img { width: 100%; height: 100%; object-fit: cover; }
     .overview-card {
       border: 1px solid var(--card-border); border-radius: var(--radius);
@@ -203,6 +203,8 @@
     @media (max-width: 720px) {
       :root { --gutter: 16px; }
       section.container { margin-top: 90px; }
+      css
+      .overview-photo { aspect-ratio: 636 / 432; }
       .overview-grid, .highlights { grid-template-columns: 1fr; }
       .overview-card p.lead { font-size: 26px; }
       .acc-btn { font-size: 24px; }
