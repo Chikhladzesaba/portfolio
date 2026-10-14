@@ -79,7 +79,10 @@
       .carousel { overflow-x: auto; }
       .carousel-track { animation: none; }
     }
-
+    /* Fade-and-slide-up animation */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
     /* Footer */
     footer { background: var(--ink); color: #fff; margin-top: 150px; padding: 50px 0; }
     .footer-inner { max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
@@ -129,24 +132,24 @@
 
   <main>
     <div class="wrap">
-      <dl class="facts">
+      <dl class="facts reveal">
         <div><dt>Industry</dt><dd>Digital Innovation &amp; Media</dd></div>
         <div><dt>Objective</dt><dd>Connect Through Innovation</dd></div>
       </dl>
 
-      <h1>From Legacy to Innovation: Connecting Media with Emerging Tech</h1>
+      <h1 class="reveal">From Legacy to Innovation: Connecting Media with Emerging Tech</h1>
 
-      <div class="hero"><img src="/images/hackathon.avif" alt=""></div>
+      <div class="hero reveal"><img src="/images/hackathon.avif" alt=""></div>
 
-      <div class="prose">
+      <div class="prose reveal">
         <p>RFE/RL’s Georgian team aimed to engage younger, tech-savvy audiences in fresh, relevant ways. While respected for its editorial strength, the brand lacked a visible innovation presence to attract the next generation of media consumers.</p>
         <p>To tackle this, I co-led a two-day hackathon focused on chatbot creation. Partnering with a local AI startup, participants turned real newsroom content into interactive chatbot experiences. This introduced new ways to use technology in storytelling and created a creative bridge between the newsroom and the tech community.</p>
         <p>At the same time, I worked with a local AI startup to build Freeda, a branded chatbot that was successfully launched and actively used by customers. Hackathon winners joined a three-month paid mentorship program to further develop Freeda’s features and improve its real-world performance.</p>
       </div>
 
-      <div class="panel"><img src="/images/hackathon-graphic.webp" alt="Freeda chatbot logos"></div>
+      <div class="panel reveal"><img src="/images/hackathon-graphic.webp" alt="Freeda chatbot logos"></div>
 
-      <div class="prose">
+      <div class="prose reveal">
         <h2>Results That Changed Perception and Strategy</h2>
         <p>The hackathon positioned the brand as digitally forward and innovative. The chatbot became part of a content campaign lasting several months and gained wide visibility:</p>
         <ul>
@@ -159,7 +162,7 @@
       </div>
     </div>
 
-    <div class="carousel" aria-label="Hackathon photos">
+    <div class="carousel reveal" aria-label="Hackathon photos">
       <div class="carousel-track" id="carousel"></div>
     </div>
   </main>
@@ -189,6 +192,11 @@
       .map(([file, alt]) => `<img src="/images/${file}" alt="${alt}" loading="lazy">`)
       .join("");
     document.getElementById("carousel").innerHTML = set + set;
+        // Fade in each section as it scrolls into view
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
   </script>
 </body>
 </html>
