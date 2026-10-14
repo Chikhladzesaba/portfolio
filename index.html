@@ -358,15 +358,15 @@
     const CZ = "🇨🇿 Prague, Czechia", GE = "🇬🇪 Tbilisi, Georgia";
     const experience = [
       { org: "Freelance", logo: null, roles: [["Product & Growth Consultant", "2026 - Present", null]] },
-      { org: "RFE/RL", logo: "ORAKQz5BrtSJs513D0KuC0cZLk.png", roles: [
+      { org: "RFE/RL", logo: "rferl.avif", roles: [
           ["Digital Product Manager", "2023 - 2025", CZ],
           ["Digital Lead (Chief Digital Editor)", "2018 - 2023", GE]] },
-      { org: "Georgian Institute of Public Affairs (GIPA)", logo: "hips50bf0KKcPmIxIT57vMz7gU.png", roles: [["Lecturer", "2020 - Present", GE]] },
-      { org: "Georgian Football Federation", logo: "a8CpPdQpKNKI9hXHxVKJGJeyY.png", roles: [
+      { org: "Georgian Institute of Public Affairs (GIPA)", logo: "gipa.avif", roles: [["Lecturer", "2020 - Present", GE]] },
+      { org: "Georgian Football Federation", logo: "gff.avif", roles: [
           ["Digital Marketing Consultant", "2017 - 2019", GE],
           ["Digital Communications Manager", "2016", GE]] },
-      { org: "Beer Georgia", logo: "pkKvYYwjRcd7gjnusXZewbEJ90.png", roles: [["Digital Marketing Manager", "2016 - 2018", GE]] },
-      { org: "FC Dinamo Tbilisi", logo: "hLaHhLU9tT3k9EN4QY7MlxqM4tU.jpg", roles: [["Social Media Manager", "2015 - 2016", GE]] },
+      { org: "Beer Georgia", logo: "beer-georgia-logo.avif", roles: [["Digital Marketing Manager", "2016 - 2018", GE]] },
+      { org: "FC Dinamo Tbilisi", logo: "dinamo.avif", roles: [["Social Media Manager", "2015 - 2016", GE]] },
     ];
 
     const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -399,7 +399,7 @@
     document.getElementById("experience-list").innerHTML = experience.map(x => `
       <div class="exp">
         ${x.logo
-          ? `<img class="exp-logo" src="https://framerusercontent.com/images/${x.logo}" alt="">`
+          ? `<img class="exp-logo" src="images/${x.logo}" alt="">`
           : `<div class="exp-logo text">FREELANCE</div>`}
         <div>
           <h3>${esc(x.org)}</h3>
