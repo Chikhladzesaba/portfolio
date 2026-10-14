@@ -1,4 +1,4 @@
-# Saba Chikhladze — Career Highlights
+# Saba Chikhladze - Career Highlights
 
 Personal portfolio of **Saba Chikhladze**, Digital Product & Growth specialist
 
