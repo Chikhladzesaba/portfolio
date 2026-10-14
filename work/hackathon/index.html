@@ -168,3 +168,27 @@
     <div class="footer-inner">
       <p class="kicker">Have something in mind?</p>
       <h2>Feel Free to Reach Out</h2>
+      <a class="cta" href="mailto:sabachikhladze@outlook.com">Let's talk
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+      <p class="footer-bottom">©2025 | Saba Chikhladze <em>Career</em> Highlights</p>
+    </div>
+  </footer>
+
+  <script>
+    // Photos in the strip: [file name, description for screen readers]
+    const photos = [
+      ["hackathon-room.webp", "Participants working at tables during the hackathon"],
+      ["hackathon-presenting.jpg", "Saba presenting at the hackathon"],
+      ["hackathon-logo.webp", "Hackathon logo"],
+      ["hackathon-audience.webp", "Audience watching a presentation"],
+    ];
+
+    // Repeat the set so the strip is long enough, then double it for a seamless loop
+    const set = photos.concat(photos)
+      .map(([file, alt]) => `<img src="/images/${file}" alt="${alt}" loading="lazy">`)
+      .join("");
+    document.getElementById("carousel").innerHTML = set + set;
+  </script>
+</body>
+</html>
