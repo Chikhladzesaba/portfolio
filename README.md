@@ -7,8 +7,6 @@ Personal portfolio of **Saba Chikhladze**, Digital Product & Growth specialist
 
 ## About this project
 
-The site was originally built in Framer. I rebuilt it by hand as a lightweight static page, to own the code.
-
 - **No frameworks, no build step:** one `index.html` file with plain HTML, CSS and JavaScript
 - **Responsive:** works on desktop, tablet and phone
 - **Hosted on GitHub Pages:** every commit to `main` deploys automatically
