@@ -60,7 +60,7 @@
     .container { width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
     section.container { margin-top: var(--section-gap); }
 
-    /* ---------- Header (stays at the top; slides away when the footer comes into view) ---------- */
+    /* ---------- Header (hides while scrolling down, comes back when scrolling up) ---------- */
     .header { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--ink); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
     .header.hide { transform: translateY(-100%); }
     .header .container { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; padding-bottom: 24px; }
@@ -453,10 +453,15 @@
         </div>
       </div>`).join("");
 
-    // ---- Header: slide away while the footer is on screen ----
+    // ---- Header (as in Framer): hides while scrolling down, comes back when scrolling up ----
     const header = document.querySelector(".header");
-    new IntersectionObserver(([e]) => header.classList.toggle("hide", e.isIntersecting))
-      .observe(document.querySelector("footer"));
+    let lastY = window.scrollY;
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+      if (y < header.offsetHeight || y < lastY - 2) header.classList.remove("hide");  // near the top, or scrolling up
+      else if (y > lastY) header.classList.add("hide");                                 // scrolling down
+      lastY = y;
+    }, { passive: true });
 
     // ---- Section labels fade in too ----
     document.querySelectorAll(".label").forEach(el => el.classList.add("reveal"));
