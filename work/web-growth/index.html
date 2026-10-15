@@ -43,8 +43,8 @@
     img { display: block; max-width: 100%; }
     .container { width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
 
-    /* ---------- Header (hides when scrolling down, comes back when scrolling up) ---------- */
-    .header { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: transform .4s ease; }
+    /* ---------- Header (hides while scrolling down, comes back when scrolling up) ---------- */
+    .header { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--ink); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
     .header.hide { transform: translateY(-100%); }
     .header .container { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; padding-bottom: 24px; }
     .brand { display: flex; gap: 14px; align-items: baseline; font-size: 20px; }
@@ -68,6 +68,17 @@
     .text p { font-size: 24px; white-space: pre-wrap; }
     .text h2 { font-family: var(--font-medium); font-weight: 500; font-size: 32px; }
 
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; justify-self: start;
+      background: #f0f0f0; color: var(--ink); padding: 16px 32px; border-radius: 64px;
+      font-family: var(--font-medium); font-weight: 500; transition: transform .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); background: #e3e3e3; }
+    .btn svg { width: 16px; height: 16px; }
+    .gallery { display: grid; gap: 40px; }
+    .photo { border-radius: 24px; overflow: hidden; height: 800px; position: relative; }
+    .photo img { position: absolute; left: -5%; top: -5%; width: 110%; height: 110%; max-width: none; object-fit: cover; }
+
     .stats { background: var(--badge); border-radius: 30px; padding: 80px 20px; }
     .stats-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: center; }
     .stat { display: grid; gap: 10px; }
@@ -75,6 +86,13 @@
     .stat strong { font-family: var(--font-medium); font-weight: 500; font-size: 64px; }
 
     /* ---------- Footer (same as homepage) ---------- */
+    /* Photo strip (moves slowly, pauses on hover) */
+    .carousel { margin-top: var(--block-gap); overflow: hidden; }
+    .carousel-track { display: flex; gap: 20px; width: max-content; animation: scroll 50s linear infinite; }
+    .carousel:hover .carousel-track { animation-play-state: paused; }
+    .carousel img { height: 340px; width: auto; max-width: none; border-radius: 20px; flex: none; }
+    @keyframes scroll { to { transform: translateX(calc(-50% - 10px)); } }
+
     footer { background: var(--ink); color: #fff; margin-top: 240px; }
     footer .container { min-height: 720px; padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; justify-content: space-between; gap: 80px; }
     .footer-top { display: flex; justify-content: space-between; gap: 40px; }
@@ -98,13 +116,17 @@
     .reveal { opacity: 0; transform: perspective(1200px) translateX(30px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
     .reveal.up { transform: perspective(1200px) translateY(30px); }
     .reveal.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .carousel { overflow-x: auto; } .carousel-track { animation: none; }
+    }
 
     /* ---------- Tablet ---------- */
     @media (max-width: 1099px) {
       :root { --gutter: 64px; --block-gap: 120px; }
       h1 { font-size: 52px; }
       .hero { height: 600px; }
+      .photo { height: 500px; }
       .text p { font-size: 22px; }
       .text h2 { font-size: 26px; }
       .stat strong { font-size: 52px; }
@@ -125,9 +147,12 @@
       .facts div { display: flex; justify-content: space-between; }
       h1 { font-size: 32px; }
       .hero { height: 350px; border-radius: 12px; }
+      .photo { height: 250px; border-radius: 12px; }
+      .gallery { gap: 16px; }
       .text p { font-size: 20px; }
       .text h2 { font-size: 22px; }
       .stats { padding: 48px 16px; }
+      .carousel img { height: 200px; }
       .stats-inner { grid-template-columns: 1fr; }
       .stat strong { font-size: 40px; }
       .footer-links { flex-wrap: wrap; }
@@ -153,7 +178,7 @@
       <h1 class="reveal">Website Transformation for SEO and Audience Growth</h1>
     </div>
 
-    <div class="hero reveal up"><img src="/images/web-growth.avif" alt="" id="hero-img"></div>
+    <div class="hero reveal up"><img src="/images/web-growth.avif" alt=""></div>
 
     <div class="text reveal">
       <p>As part of digital transformation process for leading media outlet, a key challenge was fixing the slow web publishing process. Disconnected CMS workflows and inconsistent page layouts hurt SEO and made the site confusing to navigate, which held back audience growth.
@@ -188,6 +213,7 @@ Chartbeat, Adobe Analytics, Google Search Console; Google ads; Crazy egg;</p>
     </div>
   </main>
 
+
   <footer>
     <div class="container">
       <div class="footer-top">
@@ -201,8 +227,8 @@ Chartbeat, Adobe Analytics, Google Search Console; Google ads; Crazy egg;</p>
         <div class="footer-links">
           <ul>
             <li><a href="/work/hackathon/">Chatbot Hackathon</a></li>
-            <li><a href="https://sabachikhladze.com/work/trainings-lectures">Trainings &amp; Lectures</a></li>
-            <li><a href="https://sabachikhladze.com/work/beer-georgia">SM Strategy: Beer Georgia</a></li>
+            <li><a href="/work/trainings-lectures/">Trainings &amp; Lectures</a></li>
+            <li><a href="/work/beer-georgia/">SM Strategy: Beer Georgia</a></li>
             <li><a href="/work/web-growth/">Web Transformation</a></li>
           </ul>
           <ul><li><a href="https://www.linkedin.com/in/sabachikhladze/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
@@ -213,22 +239,23 @@ Chartbeat, Adobe Analytics, Google Search Console; Google ads; Crazy egg;</p>
   </footer>
 
   <script>
-    // ---- Header: hide when scrolling down, show when scrolling up ----
+    // ---- Header (as in Framer): hides while scrolling down, comes back when scrolling up ----
     const header = document.querySelector(".header");
     let lastY = window.scrollY;
     window.addEventListener("scroll", () => {
       const y = window.scrollY;
-      header.classList.toggle("hide", y > lastY && y > 100);
+      if (y < header.offsetHeight || y < lastY - 2) header.classList.remove("hide");  // near the top, or scrolling up
+      else if (y > lastY) header.classList.add("hide");                                 // scrolling down
       lastY = y;
     }, { passive: true });
 
-    // ---- Big image: moves slightly slower than the page (parallax) ----
-    const hero = document.getElementById("hero-img");
-    const moveHero = () => {
-      const r = hero.parentElement.getBoundingClientRect();
+    // ---- Big images: move slightly slower than the page (parallax) ----
+    const bigImages = document.querySelectorAll(".hero img, .photo img");
+    const moveHero = () => bigImages.forEach(img => {
+      const r = img.parentElement.getBoundingClientRect();
       const progress = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
-      hero.style.transform = `translateY(${(progress * -4).toFixed(2)}%)`;
-    };
+      img.style.transform = `translateY(${(progress * -4).toFixed(2)}%)`;
+    });
     if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
       window.addEventListener("scroll", moveHero, { passive: true });
       moveHero();
