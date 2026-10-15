@@ -43,8 +43,8 @@
     img { display: block; max-width: 100%; }
     .container { width: 100%; max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
 
-    /* ---------- Header (hides when scrolling down, comes back when scrolling up) ---------- */
-    .header { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: transform .4s ease; }
+    /* ---------- Header (hides while scrolling down, comes back when scrolling up) ---------- */
+    .header { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--ink); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
     .header.hide { transform: translateY(-100%); }
     .header .container { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; padding-bottom: 24px; }
     .brand { display: flex; gap: 14px; align-items: baseline; font-size: 20px; }
@@ -86,6 +86,13 @@
     .stat strong { font-family: var(--font-medium); font-weight: 500; font-size: 64px; }
 
     /* ---------- Footer (same as homepage) ---------- */
+    /* Photo strip (moves slowly, pauses on hover) */
+    .carousel { margin-top: var(--block-gap); overflow: hidden; }
+    .carousel-track { display: flex; gap: 20px; width: max-content; animation: scroll 50s linear infinite; }
+    .carousel:hover .carousel-track { animation-play-state: paused; }
+    .carousel img { height: 340px; width: auto; max-width: none; border-radius: 20px; flex: none; }
+    @keyframes scroll { to { transform: translateX(calc(-50% - 10px)); } }
+
     footer { background: var(--ink); color: #fff; margin-top: 240px; }
     footer .container { min-height: 720px; padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; justify-content: space-between; gap: 80px; }
     .footer-top { display: flex; justify-content: space-between; gap: 40px; }
@@ -109,7 +116,10 @@
     .reveal { opacity: 0; transform: perspective(1200px) translateX(30px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
     .reveal.up { transform: perspective(1200px) translateY(30px); }
     .reveal.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .carousel { overflow-x: auto; } .carousel-track { animation: none; }
+    }
 
     /* ---------- Tablet ---------- */
     @media (max-width: 1099px) {
@@ -142,6 +152,7 @@
       .text p { font-size: 20px; }
       .text h2 { font-size: 22px; }
       .stats { padding: 48px 16px; }
+      .carousel img { height: 200px; }
       .stats-inner { grid-template-columns: 1fr; }
       .stat strong { font-size: 40px; }
       .footer-links { flex-wrap: wrap; }
@@ -199,6 +210,7 @@ I used interactive content, contests on key dates, special discounts, and giveaw
     </div>
   </main>
 
+
   <footer>
     <div class="container">
       <div class="footer-top">
@@ -212,7 +224,7 @@ I used interactive content, contests on key dates, special discounts, and giveaw
         <div class="footer-links">
           <ul>
             <li><a href="/work/hackathon/">Chatbot Hackathon</a></li>
-            <li><a href="https://sabachikhladze.com/work/trainings-lectures">Trainings &amp; Lectures</a></li>
+            <li><a href="/work/trainings-lectures/">Trainings &amp; Lectures</a></li>
             <li><a href="/work/beer-georgia/">SM Strategy: Beer Georgia</a></li>
             <li><a href="/work/web-growth/">Web Transformation</a></li>
           </ul>
@@ -224,12 +236,13 @@ I used interactive content, contests on key dates, special discounts, and giveaw
   </footer>
 
   <script>
-    // ---- Header: hide when scrolling down, show when scrolling up ----
+    // ---- Header (as in Framer): hides while scrolling down, comes back when scrolling up ----
     const header = document.querySelector(".header");
     let lastY = window.scrollY;
     window.addEventListener("scroll", () => {
       const y = window.scrollY;
-      header.classList.toggle("hide", y > lastY && y > 100);
+      if (y < header.offsetHeight || y < lastY - 2) header.classList.remove("hide");  // near the top, or scrolling up
+      else if (y > lastY) header.classList.add("hide");                                 // scrolling down
       lastY = y;
     }, { passive: true });
 
