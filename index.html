@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "efbf0f07aa6744258955379c96c9535f"}'></script><!-- End Cloudflare Web Analytics -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Saba Chikhladze</title>
@@ -8,7 +9,9 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Saba Chikhladze">
   <meta property="og:description" content="Digital Product &amp; Growth Specialist with experience in media, sports and education.">
-  <meta property="og:image" content="https://chikhladzesaba.github.io/images/og-image.png">
+ <meta property="og:image" content="https://sabachikhladze.com/images/og-image.png">
+   <meta property="og:url" content="https://sabachikhladze.com/">
+  <link rel="canonical" href="https://sabachikhladze.com/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="images/favicon.png">
 
@@ -17,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 
   <style>
-    /* All sizes below are measured from the original Framer site.
+    /* Layout sizes.
        Screen sizes: desktop 1100px and up, tablet 768–1099px, phone under 768px. */
     :root {
       --ink: #1a1b22;
@@ -113,7 +116,7 @@
     .hl-media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 620 / 549; }
     .hl-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
     .hl-card:hover .hl-media img { transform: scale(1.06); }
-    /* Arrow badge: a see-through tilted pill that becomes a circle on hover (as in Framer) */
+    /* Arrow badge: a see-through tilted pill that becomes a circle on hover */
     .hl-arrow {
       position: absolute; left: 28px; bottom: 28px; width: 32px; height: 48px; border-radius: 200px;
       background: rgba(255, 255, 255, .2); color: #fff; display: grid; place-items: center;
@@ -186,6 +189,7 @@
     .footer-links a { opacity: .6; transition: opacity .2s ease; }
     .footer-links a:hover { opacity: 1; }
     .footer-bottom { color: #8b8d96; }
+    .footer-note { color: #8b8d96; font-size: 14px; margin-top: 16px; }
     .footer-bottom em { font-family: var(--font-serif); }
 
     /* ---------- Scroll animations ----------
@@ -256,9 +260,10 @@
           <img src="images/saba.avif" alt="Saba speaking on a panel">
         </div>
         <div class="overview-card reveal">
-          <p class="lead">I help organizations build and scale digital platforms that engage users and drive measurable growth.</p>
+          <p class="lead"> I help organizations build and scale digital platforms that engage users and drive measurable growth.</p>
           <div class="who">
-            <strong>Saba</strong>
+            <strong>Saba Chikhladze</strong>
+            <span>Product &amp; Growth Strategist</span>
           </div>
         </div>
       </div>
@@ -329,6 +334,7 @@
           <a class="cta" href="mailto:sabachikhladze@outlook.com">Let's talk
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
           </a>
+          <p class="footer-note">This website counts visits with cookieless analytics.</p>
         </div>
         <div class="footer-links">
           <ul>
@@ -352,7 +358,7 @@
       ["Product Strategy & Management", ["Roadmap Planning", "Team Leadership", "User Research & Insights", "Stakeholder Management"]],
       ["Web Platforms & SEO", ["Website & CMS", "SEO Strategy", "Content Optimization", "Web Analytics"]],
       ["Audience Development", ["Channel & Content Strategy", "Community Building", "Paid Social", "Push Notifications & Lifecycle"]],
-      ["Workshops & Training", ["Customized Workshops", "Digital Media Training", "Syllabus Development", "Mentoring"]],
+      ["Training & Lectures", ["University Lectures", "Custom Workshops", "Course & Syllabus Design", "Mentoring"]]
     ];
 
     const icon = {
@@ -437,7 +443,7 @@
         </div>
       </div>`).join("");
 
-    // ---- Header (as in Framer): hides while scrolling down, comes back when scrolling up ----
+    // ---- Header: hides while scrolling down, comes back when scrolling up ----
     const header = document.querySelector(".header");
     let lastY = window.scrollY;
     window.addEventListener("scroll", () => {
