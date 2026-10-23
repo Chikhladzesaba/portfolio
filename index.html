@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
 
   <style>
-    /* All sizes below are measured from the original Framer site.
+    /* Layout sizes.
        Screen sizes: desktop 1100px and up, tablet 768–1099px, phone under 768px. */
     :root {
       --ink: #1a1b22;
@@ -116,7 +116,7 @@
     .hl-media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 620 / 549; }
     .hl-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
     .hl-card:hover .hl-media img { transform: scale(1.06); }
-    /* Arrow badge: a see-through tilted pill that becomes a circle on hover (as in Framer) */
+    /* Arrow badge: a see-through tilted pill that becomes a circle on hover */
     .hl-arrow {
       position: absolute; left: 28px; bottom: 28px; width: 32px; height: 48px; border-radius: 200px;
       background: rgba(255, 255, 255, .2); color: #fff; display: grid; place-items: center;
@@ -443,7 +443,7 @@
         </div>
       </div>`).join("");
 
-    // ---- Header (as in Framer): hides while scrolling down, comes back when scrolling up ----
+    // ---- Header: hides while scrolling down, comes back when scrolling up ----
     const header = document.querySelector(".header");
     let lastY = window.scrollY;
     window.addEventListener("scroll", () => {
