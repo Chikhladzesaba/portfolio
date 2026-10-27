@@ -129,7 +129,7 @@
 
         /* ---------- Tools I built ---------- */
     .built-intro { font-size: 22px; max-width: 40ch; margin-bottom: 32px; }
-    .built { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .built { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }     .built-hub { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; color: var(--accent); font-family: var(--font-medium); font-weight: 500; font-size: 18px; }     .built-hub svg { width: 14px; height: 14px; }     .built-hub:hover { text-decoration: underline; }
     .built-card {
       position: relative; display: flex; flex-direction: column; gap: 12px; min-height: 200px;
       border: 1px solid var(--border); border-radius: var(--radius); padding: 30px;
@@ -144,7 +144,7 @@
     }
     .built-card .go svg { width: 16px; height: 16px; }
     .built-card:hover .go { background: var(--accent); color: #fff; }
-    @media (max-width: 1099px) { .built { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 1099px) { .built { grid-template-columns: 1fr; gap: 16px; } .built-card { min-height: 0; } }
     @media (max-width: 767px) {
       .built { grid-template-columns: 1fr; gap: 16px; }
       .built-card { min-height: 0; padding: 24px; }
@@ -318,11 +318,6 @@
       <div class="label">Tools I built</div>
       <p class="built-intro reveal">I build small tools to solve problems I keep running into in my work.</p>
       <div class="built">
-        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/creator-tools/" target="_blank" rel="noopener">
-          <h3>Creator Desk</h3>
-          <p>Free tools for small creators, all in one place. No sign-up, data stays in the browser.</p>
-          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-        </a>
         <a class="built-card reveal up" href="https://chikhladzesaba.github.io/show-ledger/" target="_blank" rel="noopener">
           <h3>Show Ledger</h3>
           <p>Track a creator's income and costs by month, quarter and year.</p>
@@ -339,6 +334,7 @@
           <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
         </a>
       </div>
+         <a class="built-hub" href="https://chikhladzesaba.github.io/creator-tools/" target="_blank" rel="noopener">See them all on Creator Desk <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
     </section>
     <!-- Skills & Tools -->
     <section id="tools" class="container">
