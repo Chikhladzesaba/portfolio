@@ -503,7 +503,7 @@
     document.querySelectorAll(".label").forEach(el => el.classList.add("reveal"));
 
     // ---- Small delay between items that appear together (tool icons, highlight cards) ----
-    document.querySelectorAll(".tools .tool").forEach((el, i) => { el.style.transitionDelay = `${i * 0.08}s`; });
+    document.querySelectorAll(".tools .tool").forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 0.08}s`; });
     document.querySelectorAll(".highlights .hl-card").forEach((el, i) => { el.style.transitionDelay = `${(i % 2) * 0.08}s`; });
 
     // ---- Scroll reveal: add "in" when an element comes into view ----
