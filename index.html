@@ -127,6 +127,29 @@
     .hl-card:hover .hl-arrow svg { transform: none; }
     .hl-card h3 { font-family: var(--font-medium); font-weight: 500; font-size: 24px; margin-top: 24px; }
 
+        /* ---------- Tools I built ---------- */
+    .built-intro { font-size: 22px; max-width: 40ch; margin-bottom: 32px; }
+    .built { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .built-card {
+      position: relative; display: flex; flex-direction: column; gap: 12px; min-height: 200px;
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 30px;
+      transition: border-color .3s ease;
+    }
+    .built-card:hover { border-color: var(--accent); }
+    .built-card h3 { font-family: var(--font-medium); font-weight: 500; font-size: 24px; padding-right: 48px; }
+    .built-card p { color: #5b6070; font-size: 18px; line-height: 1.4; }
+    .built-card .go {
+      position: absolute; top: 24px; right: 24px; width: 40px; height: 40px; border-radius: 50%;
+      background: var(--badge); color: var(--accent); display: grid; place-items: center; transition: all .3s ease;
+    }
+    .built-card .go svg { width: 16px; height: 16px; }
+    .built-card:hover .go { background: var(--accent); color: #fff; }
+    @media (max-width: 1099px) { .built { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 767px) {
+      .built { grid-template-columns: 1fr; gap: 16px; }
+      .built-card { min-height: 0; padding: 24px; }
+      .built-intro { font-size: 20px; }
+    }
     /* ---------- Skills & Tools ---------- */
     .tools {
       border: 1px solid var(--border); border-radius: var(--radius);
@@ -290,6 +313,33 @@
       </div>
     </section>
 
+       <!-- Tools I built -->
+    <section id="built" class="container">
+      <div class="label">Tools I built</div>
+      <p class="built-intro reveal">I build small tools with AI to solve problems I keep running into in my work.</p>
+      <div class="built">
+        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/creator-tools/" target="_blank" rel="noopener">
+          <h3>Creator Desk</h3>
+          <p>Free tools for small creators, all in one place. No sign-up, data stays in the browser.</p>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/show-ledger/" target="_blank" rel="noopener">
+          <h3>Show Ledger</h3>
+          <p>Track a creator's income and costs by month, quarter and year.</p>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/media-kit/" target="_blank" rel="noopener">
+          <h3>Media Kit</h3>
+          <p>A one-page media kit and rate card creators can download and send to sponsors.</p>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/utm-wizard/" target="_blank" rel="noopener">
+          <h3>UTM Wizard</h3>
+          <p>Build correct UTM links step by step, and learn how they work along the way.</p>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+      </div>
+    </section>
     <!-- Skills & Tools -->
     <section id="tools" class="container">
       <div class="label">Skills &amp; Tools</div>
