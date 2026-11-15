@@ -2,7 +2,6 @@
 
 Personal portfolio of **Saba Chikhladze**, Digital Product & Growth specialist
 
-🌐 **Live site:** [sabachikhladze.netlify.app](https://sabachikhladze.netlify.app)
 💼 **LinkedIn:** [linkedin.com/in/sabachikhladze](https://www.linkedin.com/in/sabachikhladze/)
 
 ## About this project
@@ -18,15 +17,6 @@ Personal portfolio of **Saba Chikhladze**, Digital Product & Growth specialist
 - **Highlights:** selected projects
 - **Skills & Tools:** analytics and product tools I use
 
-
-## Roadmap
-
-- [x] Rebuild the homepage in plain HTML/CSS/JS
-- [x] Publish on GitHub Pages
-- [x] Host images in the repository
-- [x] Rebuild the project pages
-- [x] Move hosting to Netlify
-- [ ] Connect sabachikhladze.com
 
 ---
 
