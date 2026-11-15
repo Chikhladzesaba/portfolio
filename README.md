@@ -16,8 +16,7 @@ Personal portfolio of **Saba Chikhladze**, Digital Product & Growth specialist
 - **Areas of Expertise:** growth, product, web, audience development, training
 - **Highlights:** selected projects
 - **Skills & Tools:** analytics and product tools I use
-
-
+.
 ---
 
 © Saba Chikhladze. All rights reserved.
