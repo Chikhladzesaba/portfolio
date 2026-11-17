@@ -128,7 +128,7 @@
     .hl-card h3 { font-family: var(--font-medium); font-weight: 500; font-size: 24px; margin-top: 24px; }
 
         /* ---------- Tools I built ---------- */
-    .built-intro { font-size: 22px; max-width: 40ch; margin-bottom: 32px; }
+    .built-intro { font-size: 22px; max-width: 40ch; margin-bottom: 32px; }     .built.single { grid-template-columns: 1fr; }     .built-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-right: 48px; }     .built-chips span { font-size: 14px; padding: 6px 12px; border: 1px solid #d9dce3; border-radius: 20px; color: #5b6070; }
     .built { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }     .built-hub { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; color: var(--accent); font-family: var(--font-medium); font-weight: 500; font-size: 18px; }     .built-hub svg { width: 14px; height: 14px; }     .built-hub:hover { text-decoration: underline; }
     .built-card {
       position: relative; display: flex; flex-direction: column; gap: 12px; min-height: 200px;
@@ -313,7 +313,21 @@
       </div>
     </section>
 
-       <!-- Tools I built -->
+    <!-- Things I built: Kickoff Puzzles -->
+    <section id="featured-project" class="container">
+      <div class="label">Things I built</div>
+      <p class="built-intro reveal">Football puzzles for fans. I made them for my friends first, then they pushed me to go public.</p>
+      <div class="built single">
+        <a class="built-card reveal up" href="https://kickoffpuzzles.com/" target="_blank" rel="noopener">
+          <h3>Kickoff Puzzles</h3>
+          <p>Crosswords and quick games for football fans, in English and Georgian.</p>
+          <div class="built-chips"><span>Crosswords</span><span>Top 5</span><span>Scramble</span><span>Word Search</span></div>
+          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Tools I built -->
     <section id="built" class="container">
       <div class="label">Things I built</div>
      <p class="built-intro reveal">I build small tools for problems I run into at work, and games for the fun of it.</p>
