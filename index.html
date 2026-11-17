@@ -128,7 +128,9 @@
     .hl-card h3 { font-family: var(--font-medium); font-weight: 500; font-size: 24px; margin-top: 24px; }
 
         /* ---------- Tools I built ---------- */
-    .built-intro { font-size: 22px; max-width: 40ch; margin-bottom: 32px; }     .built.single { grid-template-columns: 1fr; }     .built-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-right: 48px; }     .built-chips span { font-size: 14px; padding: 6px 12px; border: 1px solid #d9dce3; border-radius: 20px; color: #5b6070; }
+    .built-intro { font-size: 22px; max-width: 40ch; margin-bottom: 32px; }     .built.single { grid-template-columns: 1fr; }
+    #built { margin-top: 64px; }
+    .built-sub { font-size: 14px; color: var(--accent); margin: 0 0 12px; }     .built-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-right: 48px; }     .built-chips span { font-size: 14px; padding: 6px 12px; border: 1px solid #d9dce3; border-radius: 20px; color: #5b6070; }
     .built { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }    .built-hub { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; color: var(--accent); font-family: var(--font-medium); font-weight: 500; font-size: 18px; }     .built-hub svg { width: 14px; height: 14px; }     .built-hub:hover { text-decoration: underline; }
     .built-card {
       position: relative; display: flex; flex-direction: column; gap: 12px; min-height: 200px;
@@ -329,7 +331,7 @@
 
     <!-- Tools I built -->
     <section id="built" class="container">
-          <div class="label">Tools for creators</div>
+          <p class="built-sub">Tools for creators</p>
      <p class="built-intro reveal">Tools I build for problems I run into while working with creators and organizations on marketing and monetization. Early versions, still evolving.</p>
       <div class="built">
         <a class="built-card reveal up" href="https://chikhladzesaba.github.io/show-ledger/" target="_blank" rel="noopener">
