@@ -3,12 +3,13 @@
 <head>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "efbf0f07aa6744258955379c96c9535f"}'></script><!-- End Cloudflare Web Analytics -->
   <meta charset="utf-8">
+  <script>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Saba Chikhladze | Product &amp; Growth Strategist</title>
-  <meta name="description" content="I help teams build digital platforms that engage users and drive measurable growth, combining product strategy, product marketing and audience development.">
+  <title>Saba Chikhladze | Growth &amp; Product Marketing</title>
+  <meta name="description" content="Growth and product marketer with 10+ years across markets. Launching products, growing audiences and making users come back.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Saba Chikhladze | Product &amp; Growth Strategist">
-  <meta property="og:description" content="I help teams build digital platforms that engage users and drive measurable growth, combining product strategy, product marketing and audience development.">
+  <meta property="og:title" content="Saba Chikhladze | Growth &amp; Product Marketing">
+  <meta property="og:description" content="Growth and product marketer with 10+ years across markets. Launching products, growing audiences and making users come back.">
  <meta property="og:image" content="https://sabachikhladze.com/images/og-image.png">
    <meta property="og:url" content="https://sabachikhladze.com/">
   <link rel="canonical" href="https://sabachikhladze.com/">
@@ -17,23 +18,24 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     /* Layout sizes.
        Screen sizes: desktop 1100px and up, tablet 768–1099px, phone under 768px. */
     :root {
-      --ink: #1a1b22;
+      --ink: #dce5f0;       /* main text colour */
+      --dark: #1a1b22;      /* dark background colour */
       --accent: #006aff;
-      --border: #c5dcf0;     /* light blue borders on boxes */
-      --badge: #f7fbff;      /* background of the date badges */
-      --grey: #969696;       /* location text */
-      --line: #e6e7eb;       /* divider lines */
-      --bg: #ffffff;
-      --font-regular: "PP Neue Montreal Regular", "Inter Tight", system-ui, sans-serif;
-      --font-medium: "PP Neue Montreal Medium", "Inter Tight", system-ui, sans-serif;
-      --font-bold: "Neue Montreal Bold", "Inter Tight", system-ui, sans-serif;
-      --font-serif: "Tiempos Headline Light Italic", "Instrument Serif", Georgia, serif;
+      --border: rgba(233, 242, 253, .18);     /* light blue borders on boxes */
+      --badge: rgba(0, 106, 255, .16);      /* background of the date badges */
+      --grey: rgba(220, 229, 240, .5);       /* location text */
+      --line: rgba(233, 242, 253, .14);       /* divider lines */
+      --bg: #1a1b22;
+      --font-regular: "Google Sans Code", ui-monospace, monospace;
+      --font-medium: "Google Sans Code", ui-monospace, monospace;
+      --font-bold: "Google Sans Code", ui-monospace, monospace;
+      --font-serif: "Google Sans Code", ui-monospace, monospace;
       --radius: 20px;
       --max: 1800px;         /* width of the content */
       --gutter: 80px;        /* space at the screen edges */
@@ -41,17 +43,19 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    h1, h2, h3, h4, h5, h6, strong, b, th, dt { font-weight: 400; }
     html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--ink);
       font-family: var(--font-regular);
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.1;
       letter-spacing: -.01em;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+    html { overflow-x: clip; }   /* stops sections that slide in from the right from widening the page on phones */
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
 
@@ -59,21 +63,20 @@
     section.container { margin-top: var(--section-gap); }
 
     /* ---------- Header (hides while scrolling down, comes back when scrolling up) ---------- */
-    .header { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--ink); background: var(--bg); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-    .header.hide { transform: translateY(-100%); }
+    .header { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--ink); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
     .header .container { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; padding-bottom: 24px; }
-    .brand { display: flex; gap: 14px; align-items: baseline; font-size: 20px; }
-    .brand em { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
+    .brand { display: flex; gap: 14px; align-items: baseline; font-size: 15px; }
+    .brand em { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
     .pill {
-      background: var(--ink); color: #fff; border-radius: 999px;
-      padding: 8px 16px; font-size: 18px; transition: transform .2s ease;
+      background: var(--accent); color: #fff; border-radius: 999px;
+      padding: 8px 16px; font-size: 13px; transition: transform .2s ease;
     }
     .pill:hover { transform: scale(1.05); }
 
     /* ---------- Section label: blue dot + text ---------- */
     .label {
       display: flex; align-items: center; gap: 6px; padding: 10px 0; margin-bottom: 14px;
-      color: var(--accent); font-family: var(--font-bold); font-weight: 600; font-size: 18px; letter-spacing: 0;
+      color: var(--accent); font-family: var(--font-bold); font-weight: 400; font-size: 16px; letter-spacing: 0;
     }
     .label::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
 
@@ -86,8 +89,8 @@
       border: 1px solid var(--border); border-radius: var(--radius); padding: 30px;
       display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
     }
-    .overview-card p.lead { font-size: 32px; max-width: 30ch; }
-    .who .name, .who strong { display: block; font-family: var(--font-bold); font-weight: 600; letter-spacing: 0; margin-bottom: 8px; }
+    .overview-card p.lead { font-size: 24px; max-width: 30ch; }
+    .who .name, .who strong { display: block; font-family: var(--font-bold); font-weight: 400; letter-spacing: 0; margin-bottom: 8px; }
 
     /* ---------- Areas of Expertise (click to open) ---------- */
     .acc-item { border-bottom: 1px solid var(--line); }
@@ -95,8 +98,8 @@
     .acc-btn {
       width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 24px;
       background: none; border: 0; cursor: pointer; text-align: left; color: inherit;
-      padding: 24px 0; font-family: var(--font-medium); font-weight: 500;
-      font-size: 40px; line-height: 1.1; letter-spacing: -.01em;
+      padding: 24px 0; font-family: var(--font-medium); font-weight: 400;
+      font-size: 30px; line-height: 1.1; letter-spacing: -.01em;
     }
     .acc-btn svg { width: 24px; height: 24px; flex: none; transition: transform .35s ease; }
     .acc-item.open .acc-btn svg { transform: rotate(180deg); }
@@ -105,7 +108,7 @@
     .acc-panel > div { overflow: hidden; }
     .acc-panel ul { list-style: none; display: grid; gap: 16px; padding: 0 0 32px; }
     .acc-panel li {
-      font-family: var(--font-medium); font-weight: 500; font-size: 24px;
+      font-family: var(--font-medium); font-weight: 400; font-size: 18px;
       opacity: 0; transition: opacity .4s ease;
     }
     .acc-item.open .acc-panel li { opacity: 1; transition-delay: .15s; }
@@ -113,33 +116,24 @@
     /* ---------- Highlights ---------- */
     .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 24px; }
     .hl-card { display: block; }
-    .hl-media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 620 / 549; }
+    .hl-media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 620 / 275; }
     .hl-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
     .hl-card:hover .hl-media img { transform: scale(1.06); }
-    /* Arrow badge: a see-through tilted pill that becomes a circle on hover */
-    .hl-arrow {
-      position: absolute; left: 28px; bottom: 28px; width: 32px; height: 48px; border-radius: 200px;
-      background: rgba(255, 255, 255, .2); color: #fff; display: grid; place-items: center;
-      transform: rotate(45deg); transition: all .4s cubic-bezier(.2,.7,.2,1);
-    }
-    .hl-arrow svg { width: 16px; height: 16px; transform: rotate(-45deg); transition: transform .4s cubic-bezier(.2,.7,.2,1); }
-    .hl-card:hover .hl-arrow { left: 24px; bottom: 24px; width: 56px; height: 56px; transform: none; }
-    .hl-card:hover .hl-arrow svg { transform: none; }
-    .hl-card h3 { font-family: var(--font-medium); font-weight: 500; font-size: 24px; margin-top: 24px; }
+    .hl-card h3 { font-family: var(--font-medium); font-weight: 400; font-size: 18px; margin-top: 24px; }
 
         /* ---------- Tools I built ---------- */
-    .built-intro { font-family: var(--font-medium); font-size: 22px; max-width: 40ch; margin-bottom: 32px; }     .built.single { grid-template-columns: 1fr; }
+    .built-intro { font-family: var(--font-medium); font-size: 17px; max-width: 52ch; margin-bottom: 32px; }     .built.single { grid-template-columns: 1fr; }
     #built { margin-top: 64px; }
-    .built-sub { font-size: 14px; color: var(--accent); margin: 0 0 12px; }     .built-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-right: 48px; }     .built-chips span { font-size: 14px; padding: 6px 12px; border: 1px solid #d9dce3; border-radius: 20px; color: #5b6070; }
-    .built { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }    .built-hub { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; color: var(--accent); font-family: var(--font-medium); font-weight: 500; font-size: 18px; }     .built-hub svg { width: 14px; height: 14px; }     .built-hub:hover { text-decoration: underline; }
+    .built-sub { font-size: 16px; color: var(--ink); margin: 0 0 12px; }     .built-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-right: 48px; }     .built-chips span { font-size: 13px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 20px; color: rgba(220, 229, 240, .62); }
+    .built { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }    .built-hub { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; color: var(--accent); font-family: var(--font-medium); font-weight: 400; font-size: 13px; }     .built-hub svg { width: 14px; height: 14px; }     .built-hub:hover { text-decoration: underline; }
     .built-card {
       position: relative; display: flex; flex-direction: column; gap: 12px; min-height: 200px;
       border: 1px solid var(--border); border-radius: var(--radius); padding: 30px;
       transition: border-color .3s ease;
     }
     .built-card:hover { border-color: var(--accent); }
-    .built-card h3 { font-family: var(--font-medium); font-weight: 500; font-size: 24px; padding-right: 48px; }
-    .built-card p { color: #5b6070; font-size: 18px; line-height: 1.4; }
+    .built-card h3 { font-family: var(--font-medium); font-weight: 400; font-size: 18px; padding-right: 48px; }
+    .built-card p { color: rgba(220, 229, 240, .8); font-size: 16px; line-height: 1.4; }
     .built-card .go {
       position: absolute; top: 24px; right: 24px; width: 40px; height: 40px; border-radius: 50%;
       background: var(--badge); color: var(--accent); display: grid; place-items: center; transition: all .3s ease;
@@ -150,7 +144,7 @@
     @media (max-width: 767px) {
       .built { grid-template-columns: 1fr; gap: 16px; }
       .built-card { min-height: 0; padding: 24px; }
-      .built-intro { font-size: 20px; }
+      .built-intro { font-size: 15px; }
     }
     /* ---------- Skills & Tools ---------- */
     .tools {
@@ -159,10 +153,10 @@
     }
     .tool { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
     .tool img { width: 60px; height: 60px; border-radius: 10px; }
-    .tool p { font-family: var(--font-bold); font-weight: 600; letter-spacing: 0; }
+    .tool p { font-family: var(--font-bold); font-weight: 400; font-size: 13px; letter-spacing: 0; }
 
     /* ---------- Statement (appears letter by letter) ---------- */
-    .statement { font-family: var(--font-medium); font-weight: 500; font-size: 64px; }
+    .statement { font-family: var(--font-medium); font-weight: 400; font-size: 48px; }
     .statement .word { display: inline-block; white-space: nowrap; }
     .statement .ch {
       display: inline-block; opacity: 0; transform: translateX(50px);
@@ -181,7 +175,7 @@
       padding: 30px; display: flex; flex-direction: column; justify-content: flex-start; gap: 32px;
     }
     .strength svg { width: 34px; height: 34px; color: var(--accent); }
-    .strength p { font-size: 32px; }
+    .strength p { font-size: 24px; }
 
     /* ---------- Experience ---------- */
     .experience {
@@ -190,31 +184,31 @@
     }
     .exp { display: grid; grid-template-columns: 70px 1fr; gap: 30px; align-items: start; }
     .exp-logo { width: 70px; height: 70px; border-radius: 7px; object-fit: cover; }
-    .exp-logo.text { display: grid; place-items: center; font: 700 13px/1 var(--font-bold); letter-spacing: -.02em; }
+    .exp-logo.text { display: grid; place-items: center; font: 400 12px/1 var(--font-bold); letter-spacing: -.02em; }
     .exp-body { display: grid; gap: 20px; }
     .role { display: grid; gap: 6px; justify-items: start; }
-    .exp h3 { font-family: var(--font-bold); font-weight: 600; font-size: 18px; letter-spacing: 0; }
+    .exp h3 { font-family: var(--font-bold); font-weight: 400; font-size: 16px; letter-spacing: 0; }
     .role .dates { color: var(--accent); background: var(--badge); border-radius: 6px; padding: 6px; }
-    .role .place { color: var(--grey); }
+    .role .meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 
     /* ---------- Footer ---------- */
-    footer { background: var(--ink); color: #fff; margin-top: var(--section-gap); }
-    footer .container { min-height: 720px; padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; justify-content: space-between; gap: 80px; }
+    footer { background: var(--bg); border-top: 1px solid var(--line); color: var(--ink); margin-top: var(--section-gap); }
+    footer .container { min-height: 692px; padding-top: 80px; padding-bottom: 112px; display: flex; flex-direction: column; justify-content: space-between; gap: 112px; }
     .footer-top { display: flex; justify-content: space-between; gap: 40px; }
     .footer-top .kicker { margin-bottom: 16px; }
-    .footer-top h2 { font-family: var(--font-medium); font-weight: 500; font-size: 40px; }
+    .footer-top h2 { font-family: var(--font-medium); font-weight: 400; font-size: 30px; }
     .cta {
       display: inline-flex; align-items: center; gap: 8px; margin-top: 64px;
-      background: #fff; color: var(--ink); padding: 10px 18px; border-radius: 999px;
-      font-family: var(--font-medium); font-weight: 500; transition: transform .2s ease;
+      background: #fff; color: var(--dark); padding: 10px 18px; border-radius: 999px;
+      font-family: var(--font-medium); font-weight: 400; transition: transform .2s ease;
     }
     .cta:hover { transform: translateY(-2px); }
-    .footer-links { display: flex; gap: 24px 60px; font-family: var(--font-medium); font-weight: 500; }
+    .footer-links { display: flex; gap: 24px 60px; font-family: var(--font-medium); font-weight: 400; }
     .footer-links ul { list-style: none; display: grid; gap: 10px; align-content: start; }
     .footer-links a { opacity: .6; transition: opacity .2s ease; }
     .footer-links a:hover { opacity: 1; }
-    .footer-bottom { color: #8b8d96; }
-    .footer-note { color: #8b8d96; font-size: 14px; margin-top: 16px; }
+    .footer-bottom { color: rgba(220, 229, 240, .62); }
+    .footer-note { color: rgba(220, 229, 240, .62); font-size: 12px; margin-top: 16px; }
     .footer-bottom em { font-family: var(--font-serif); }
 
     /* ---------- Scroll animations ----------
@@ -232,12 +226,12 @@
     @media (max-width: 1099px) {
       :root { --gutter: 64px; --section-gap: 120px; }
       .overview-photo { aspect-ratio: auto; height: 461px; }
-      .overview-card p.lead, .strength p { font-size: 26px; }
-      .acc-btn, .footer-top h2 { font-size: 32px; }
-      .acc-panel li, .hl-card h3 { font-size: 22px; }
-      .statement { font-size: 52px; }
+      .overview-card p.lead, .strength p { font-size: 19px; }
+      .acc-btn, .footer-top h2 { font-size: 24px; }
+      .acc-panel li, .hl-card h3 { font-size: 17px; }
+      .statement { font-size: 39px; }
       .footer-top { flex-direction: column; }
-      footer .container { min-height: 0; padding-top: 64px; padding-bottom: 64px; }
+      footer .container { min-height: 0; padding-top: 64px; padding-bottom: 90px; }
     }
 
     /* ---------- Phone ---------- */
@@ -245,17 +239,17 @@
       :root { --gutter: 16px; --section-gap: 80px; }
       #overview { padding-top: 90px; }
       .header .container { padding-top: 16px; padding-bottom: 16px; }
-      .brand { font-size: 16px; gap: 8px; }
-      .pill { font-size: 16px; padding: 6px 14px; }
+      .brand { font-size: 12px; gap: 8px; }
+      .pill { font-size: 12px; padding: 6px 14px; }
       .overview-grid, .highlights { grid-template-columns: 1fr; }
       .overview-photo { height: 343px; }
       .overview-card { order: -1; min-height: 343px; }
-      .overview-card p.lead, .strength p { font-size: 22px; }
-      .acc-btn, .footer-top h2 { font-size: 26px; }
-      .acc-panel li, .hl-card h3 { font-size: 20px; }
-      .hl-media { aspect-ratio: auto; height: 300px; }
+      .overview-card p.lead, .strength p { font-size: 17px; }
+      .acc-btn, .footer-top h2 { font-size: 19px; }
+      .acc-panel li, .hl-card h3 { font-size: 15px; }
+      .hl-media { aspect-ratio: auto; height: 150px; }
       .tools { grid-template-columns: repeat(2, 1fr); border: 0; border-radius: 0; padding: 0; row-gap: 40px; }
-      .statement { font-size: 32px; }
+      .statement { font-size: 24px; }
       .marquee { margin-top: 48px; }
       .strength { width: 280px; height: 200px; padding: 24px; }
       .experience { border: 0; border-radius: 0; padding: 0; gap: 40px; }
@@ -263,15 +257,231 @@
       .exp-logo { width: 50px; height: 50px; }
       .exp-logo.text { font-size: 9px; }
       .footer-links { flex-wrap: wrap; }
-      footer .container { padding-top: 48px; padding-bottom: 48px; }
+      footer .container { padding-top: 48px; padding-bottom: 67px; }
     }
+  
+    /* ---------- Uppercase small UI text (labels, chips, card titles, buttons) ---------- */
+    .label, .pill, .built-sub, .built-chips span, .built-hub, .built-card h3, .hl-card h3,
+    .tool p, .exp h3, .cta, .footer-links a { text-transform: uppercase; letter-spacing: .04em; font-weight: 500; }
+  
+    /* Experience: company name 100% opacity */
+    .exp h3 { color: var(--ink); font-weight: 500; }
+    .role .title { color: var(--accent); }
+    .role .dates, .role .place { color: rgba(220, 229, 240, .62); background: rgba(220, 229, 240, .08); border-radius: 6px; font-size: 13px; padding: 4px 8px; }
+  
+    /* ---------- Button sizes (same everywhere) ----------
+       Text buttons: LinkedIn pill, "Let's talk", "Beer Georgia" link  -> 40px high, 13px text
+       Shape (icon) buttons: round arrow badges                          -> 40px circle, 16px arrow */
+    :root { --btn-h: 40px; --btn-px: 20px; --btn-fs: 13px; --icon-btn: 40px; --icon-btn-icon: 16px; }
+    .pill, .cta, .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      height: var(--btn-h); padding: 0 var(--btn-px); font-size: var(--btn-fs); line-height: 1;
+      border-radius: 999px;
+    }
+    .cta svg, .btn svg { width: var(--icon-btn-icon); height: var(--icon-btn-icon); }
+    .built-card .go {
+      width: var(--icon-btn); height: var(--icon-btn); border-radius: 50%;
+    }
+    .built-card .go svg { width: var(--icon-btn-icon); height: var(--icon-btn-icon); }
+      /* "See all creator tools" link sits on the right */
+    .built-hub { display: flex; width: fit-content; margin-left: auto; }
+      /* Accordion hierarchy by colour: title brightest, list items dimmer */
+    .acc-btn { color: var(--ink); }
+    .acc-panel li { color: rgba(220, 229, 240, .62); }
+      /* Subheadlines (intro paragraphs) dimmer, like the accordion list items */
+    .built-intro { color: rgba(220, 229, 240, .62); }
+      /* Card text centred vertically, arrow stays at the top */
+    .built-card { justify-content: center; }
+    .built-card .go { top: 24px; transform: none; }
+      /* Header brand: name + role, two lines */
+    .brand { align-items: flex-start; }
+    .who-brand { display: grid; gap: 4px; }
+    .who-brand h1 { font-size: inherit; font-weight: inherit; letter-spacing: inherit; }
+    .role-brand { font-size: 13px; color: rgba(220, 229, 240, .62); }
+      /* Overview text centred vertically in its box */
+    .overview-card { justify-content: center; }
+      /* Overview: half the height, square photo, text box fills the rest */
+    :root { --ov-h: 216px; }
+    .overview-grid { grid-template-columns: var(--ov-h) 1fr; }
+    .overview-photo { width: var(--ov-h); height: var(--ov-h); aspect-ratio: auto; }
+    .overview-card { height: var(--ov-h); min-height: 0; padding: 24px 30px; }
+    .overview-card p.lead { max-width: 44ch; }
+    @media (max-width: 1099px) { :root { --ov-h: 230px; } }
+    @media (max-width: 767px) { :root { --ov-h: 172px; } .overview-grid { grid-template-columns: 1fr; } }
+
+    /* Overview = hero: only the statement, big, filling the first screen */
+    #overview { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 110px; padding-bottom: 64px; }
+    #overview .overview-card { border: 0; padding: 0; height: auto; min-height: 0; display: block; }
+    #overview .overview-card p.lead { font-size: clamp(34px, 5.6vw, 80px); line-height: 1.15; text-transform: uppercase; max-width: none; letter-spacing: -.02em; }
+    @media (max-width: 767px) { #overview { padding-top: 96px; padding-bottom: 48px; } #overview .overview-card p.lead { font-size: clamp(30px, 9.6vw, 44px); } }
+
+    /* Hero: blue "text selection" highlight wipes in from left to right (timing set in the script at the bottom) */
+    .hlw {
+      background: linear-gradient(var(--accent), var(--accent)) no-repeat left center / 100% 100%;
+      -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+    html.js .hlw { background-size: 0% 100%; }
+    html.js .hlw.hl-on { background-size: 100% 100%; color: #fff; }
+      /* ---------- Things I built: playful colours and motion ----------
+       Extra accent colours (taken from the orange cursor and green icons in the Highlights art) */
+    :root { --play-blue: #006aff; --play-orange: #ff7a3d; --play-green: #b9f58c; --play-yellow: #ffd166; }
+
+    /* Colourful tags: each one has its own colour, a slight tilt, and a bounce on hover */
+    .built-chips span {
+      --c: var(--play-blue);
+      color: var(--c); border-color: transparent;
+      background: color-mix(in srgb, var(--c) 14%, transparent);
+      transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .built-chips span:nth-child(1) { --c: var(--play-blue);   transform: rotate(-6deg); }
+    .built-chips span:nth-child(2) { --c: var(--play-orange); transform: rotate(5deg); }
+    .built-chips span:nth-child(3) { --c: var(--play-green);  transform: rotate(-4deg); }
+    .built-chips span:nth-child(4) { --c: var(--play-yellow); transform: rotate(6deg); }
+    .built-card:hover .built-chips span { transform: rotate(0) translateY(-4px); }
+    .built-chips span:hover { transform: rotate(0) translateY(-5px) scale(1.03) !important; }
+
+    /* Cards: blue border, title and arrow badge on hover, a little lift */
+    .built-card { --c: var(--play-blue); }
+    .built-card.reveal.in { transition: opacity .9s ease, border-color .3s ease, transform .35s cubic-bezier(.34, 1.56, .64, 1); }
+    .built-card.reveal.in:hover { transform: translateY(-5px) rotate(-.4deg); border-color: var(--c); }
+    .built.single .built-card.reveal.in:hover { transform: translateY(-5px); }                  /* Kickoff Puzzles card: lift only, no tilt */
+    .built:not(.single) .built-card.reveal.in:hover { transform: translateY(-5px); }           /* Tools for creators: lift only, no tilt */
+    .built-card:hover .go { background: var(--c); color: #fff; }
+    .built-card .go svg { transition: transform .35s cubic-bezier(.34, 1.56, .64, 1); }
+    .built-card:hover .go svg { transform: rotate(45deg) scale(1.15); }
+    .built-card:hover h3 { color: var(--c); }
+    @media (prefers-reduced-motion: reduce) {
+      .built-chips span, .built-card.reveal.in:hover, .built-card:hover .go svg { transform: none !important; transition: none; }
+    }
+      /* ---------- Things I built: separate panel ---------- */
+    .band {
+      background: #16171C; border-radius: 40px; margin: var(--section-gap) 0 0; padding: 96px 0;
+    }
+    .band section.container { margin-top: 0; }
+    .band #built { margin-top: 80px; }
+    @media (max-width: 767px) { .band { border-radius: 28px; padding: 64px 0; } .band #built { margin-top: 56px; } }
+      /* Both intro paragraphs in Things I built: half of the screen width */
+    .built-intro { max-width: 50vw; }
+    @media (max-width: 767px) { .built-intro { max-width: 100%; } }
+      /* Game tags: bigger, and stretched to fill the width of the card */
+    .built-chips { padding-right: 0; gap: 28px; margin-top: 24px; }
+    .built-chips span {
+      flex: 1 1 0; text-align: center; font-size: 17px; padding: 18px 16px; border-radius: 999px;
+    }
+    @media (max-width: 767px) { .built-chips span { flex: 1 1 40%; font-size: 15px; padding: 14px 12px; } }
+      /* ---------- TRY: square corners everywhere (delete this block to go back) ---------- */
+    *, *::before, *::after { border-radius: 0 !important; }
+  
+  
+    /* LinkedIn hover preview: small profile card under the button */
+    .li-wrap { position: relative; display: inline-block; }
+    .li-card {
+      position: absolute; top: calc(100% + 10px); right: 0; z-index: 60; width: max-content; max-width: 300px;
+      display: flex; align-items: center; gap: 12px; padding: 12px 16px 12px 12px;
+      background: #23242c; border: 1px solid var(--border); color: var(--ink);
+      opacity: 0; visibility: hidden; transform: translateY(-6px); pointer-events: none;
+      transition: opacity .25s cubic-bezier(.22,.8,.2,1), transform .25s cubic-bezier(.22,.8,.2,1), visibility 0s linear .25s;
+    }
+    .li-ph { width: 48px; height: 48px; overflow: hidden; flex: none; display: block; margin: 0; }
+    .li-card img { width: 150px; max-width: none; height: auto; margin: -14px 0 0 -49px; display: block; }
+    .li-card strong { display: block; font-size: 14px; font-weight: 500; }
+    .li-card .li-txt span { display: block; font-size: 12px; color: rgba(220, 229, 240, .62); margin-top: 2px; }
+    @media (hover: hover) {
+      .li-wrap:hover .li-card, .li-wrap:focus-within .li-card { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+    }
+    /* Touch screens: tap About to open the card, tap anywhere else to close it */
+    .li-wrap.open .li-card { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+  
+    /* Header: "About" button with a photo preview on hover */
+    .header-actions { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+    .li-card.li-photo { padding: 8px; }
+    .li-card.li-photo img { width: 240px; height: auto; margin: 0; display: block; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  
+    /* About button: outline style, hover card with photo + name */
+    .pill.outline { background: transparent; color: var(--ink); border: 1px solid var(--border); transition: border-color .2s ease, color .2s ease, transform .2s ease; }
+    .pill.outline:hover { border-color: var(--accent); color: var(--accent); }
+    .li-wrap.left .li-card { left: 0; right: auto; }
+    .pill.outline { cursor: default; }
+    .li-card { flex-direction: column; align-items: stretch; gap: 12px; width: 342px; max-width: calc(100vw - 32px); padding: 12px; }
+    .li-head { display: flex; align-items: center; gap: 12px; }
+    .li-bio { margin: 0; font-size: 12px; line-height: 1.55; color: rgb(220 229 240 / .8); }
+  
+    /* Scroll cue: bouncing arrow at the bottom of the first screen */
+    #overview { position: relative; }
+    .scroll-cue {
+      position: absolute; left: var(--gutter); bottom: 32px; width: 40px; height: 40px; display: grid; place-items: center;
+      border: 1px solid var(--border); color: var(--ink); transition: opacity .4s ease, border-color .2s ease, color .2s ease;
+    }
+    .scroll-cue:hover { border-color: var(--accent); color: var(--accent); }
+    .scroll-cue svg { width: 18px; height: 18px; animation: cue-bounce 1.7s cubic-bezier(.45, 0, .25, 1) infinite; }
+    .scroll-cue.gone { opacity: 0; pointer-events: none; }
+    @keyframes cue-bounce { 0%, 100% { transform: translateY(-4px); } 50% { transform: translateY(5px); } }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    @media (prefers-reduced-motion: reduce) { .scroll-cue svg { animation: none; } }
+    @media (max-width: 767px) { .scroll-cue { bottom: 24px; } }
+  
+    /* About preview: photo on the left, all text on the right */
+    .li-card { flex-direction: row; align-items: stretch; gap: 16px; width: 430px; }
+    .li-card .li-ph { width: 112px; height: auto; align-self: stretch; }
+    .li-card .li-ph img { width: 100%; height: 100%; margin: 0; object-fit: cover; object-position: 70% 40%; }
+    .li-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+    .li-body .li-bio { margin-top: 10px; }
+  
+    /* Areas of Expertise: smaller, uppercase titles */
+    .acc-btn { font-size: 22px; text-transform: uppercase; letter-spacing: .04em; padding: 22px 0; }
+    .acc-btn svg { width: 20px; height: 20px; }
+    @media (max-width: 1099px) { .acc-btn { font-size: 18px; } }
+    @media (max-width: 767px) { .acc-btn { font-size: 14px; letter-spacing: .03em; padding: 18px 0; } }
+  
+    /* Hero shortcuts: two buttons at the bottom right of the first screen */
+    .hero-links { position: absolute; right: var(--gutter); bottom: 32px; display: flex; gap: 12px; transition: opacity .4s ease; }
+    .hero-links .pill.outline { cursor: pointer; }
+    .hero-links.gone { opacity: 0; pointer-events: none; }
+    #experience, #expertise { scroll-margin-top: 100px; }
+    /* Marquee now follows the hero: sits just below the first screen */
+    .marquee { margin-top: 48px; }
+    @media (max-width: 767px) { .marquee { margin-top: 32px; } }
+    @media (max-width: 767px) { .hero-links { bottom: 24px; gap: 8px; } .hero-links .pill { padding-left: 12px; padding-right: 12px; font-size: 11px; letter-spacing: .02em; } }
+  
+    /* Scroll arrow: blue button */
+    .scroll-cue { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .scroll-cue:hover { transform: scale(1.05); }
+  
+    /* Areas of Expertise: blue on hover so it reads as clickable */
+    .acc-btn { transition: color .2s ease; }
+    .acc-btn:focus-visible { color: var(--accent); outline: none; }
+    @media (hover: hover) { .acc-btn:hover { color: var(--accent); } }
+  
+    /* Footer bottom line: analytics note on the left, copyright on the right */
+    .footer-bottom { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 24px; flex-wrap: wrap; font-size: 12px; }
+    .footer-bottom p { margin: 0; }
+  
+    /* Hero buttons stay on screen (fixed at the bottom) until the visitor reaches Areas of Expertise */
+    .scroll-cue, .hero-links { position: fixed; z-index: 40; }
+    .scroll-cue { left: calc(max(0px, (100vw - var(--max) - 2 * var(--gutter)) / 2) + var(--gutter)); }
+    .hero-links { right: calc(max(0px, (100vw - var(--max) - 2 * var(--gutter)) / 2) + var(--gutter)); }
+  
+    /* Scroll arrow flips to point up at the end of the page and takes you back to the top */
+    .cue-ico { display: grid; place-items: center; transition: transform .45s cubic-bezier(.22, .8, .2, 1); }
+    .scroll-cue.up .cue-ico { transform: rotate(180deg); }
+  
+    /* Hero shortcut buttons: solid background so content never shows through */
+    .hero-links .pill.outline { background: var(--bg); }
+  
+    /* Header has no background; the About button gets a solid one instead */
+    .pill.outline { background: var(--bg); }
   </style>
 </head>
 <body>
 
   <header class="header">
     <div class="container">
-      <a href="#" class="brand"><span><em>Career</em> highlights</span><span class="year">©2026</span></a>
+      <h1 class="sr-only">Saba Chikhladze, Growth &amp; Product Marketing</h1>
+      <div class="li-wrap left">
+        <span class="pill outline" tabindex="0">About</span>
+        <div class="li-card" aria-hidden="true"><span class="li-ph"><img src="images/saba.avif" alt=""></span><div class="li-body"><div class="li-txt"><strong>Saba Chikhladze</strong><span>Growth &amp; Product Marketing</span></div><p class="li-bio">10+ years in marketing and product. Driving growth. Building engaged audiences. Taking products to market. From Tbilisi, Georgia. Working worldwide.</p></div></div>
+      </div>
       <a class="pill" href="https://www.linkedin.com/in/sabachikhladze/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </header>
@@ -279,20 +489,20 @@
   <main>
     <!-- Overview -->
     <section id="overview" class="container">
-      <div class="label">Overview</div>
-      <div class="overview-grid">
-        <div class="overview-photo reveal">
-          <img src="images/saba.avif" alt="Saba speaking on a panel">
-        </div>
-        <div class="overview-card reveal">
-          <p class="lead"> I help organizations build and scale digital platforms that engage users and drive measurable growth.</p>
-          <div class="who">
-            <h1 class="name">Saba Chikhladze</h1>
-            <span>Product &amp; Growth Strategist</span>
-          </div>
-        </div>
+      <div class="overview-card reveal">
+        <p class="lead">I take <span class="hlw">products to market</span>, grow audiences and keep users <span class="hlw">coming back</span>.</p>
+      </div>
+      <a class="scroll-cue" href="#expertise" aria-label="Scroll down"><span class="cue-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a>
+      <div class="hero-links">
+        <a class="pill outline" href="#experience">Experience</a>
+        <a class="pill outline" href="#expertise">Areas of Expertise</a>
       </div>
     </section>
+
+    <!-- Strengths marquee -->
+    <div class="marquee" aria-label="Strengths">
+      <div class="marquee-track" id="marquee"></div>
+    </div>
 
     <!-- Areas of Expertise -->
     <section id="expertise" class="container">
@@ -315,42 +525,10 @@
       </div>
     </section>
 
-    <!-- Things I built: Kickoff Puzzles -->
-    <section id="featured-project" class="container">
-      <div class="label">Things I built</div>
-      <p class="built-intro reveal">Football puzzles for fans. I made them for my friends first, then they pushed me to go public.</p>
-      <div class="built single">
-        <a class="built-card reveal up" href="https://kickoffpuzzles.com/" target="_blank" rel="noopener">
-          <h3>Kickoff Puzzles</h3>
-          <p>Crosswords and quick games for football fans, in English and Georgian.</p>
-          <div class="built-chips"><span>Crosswords</span><span>Top 5</span><span>Scramble</span><span>Word Search</span></div>
-          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Tools I built -->
-    <section id="built" class="container">
-          <p class="built-sub">Tools for creators</p>
-     <p class="built-intro reveal">Tools I build for problems I run into while working with creators and organizations on marketing and monetization. Early versions, still evolving.</p>
-      <div class="built">
-        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/show-ledger/" target="_blank" rel="noopener">
-          <h3>Show Ledger</h3>
-          <p>Track a creator's income and costs by month, quarter and year.</p>
-          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-        </a>
-        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/media-kit/" target="_blank" rel="noopener">
-          <h3>Media Kit</h3>
-          <p>A one-page media kit and rate card creators can download and send to sponsors.</p>
-          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-        </a>
-        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/utm-wizard/" target="_blank" rel="noopener">
-          <h3>UTM Wizard</h3>
-          <p>Build correct UTM links step by step, and learn how they work along the way.</p>
-          <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
-              </a>
-      </div>
-         <a class="built-hub" href="https://chikhladzesaba.github.io/creator-tools/" target="_blank" rel="noopener">See all creator tools on Creator Desk <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    <!-- Experience -->
+    <section id="experience" class="container">
+      <div class="label">Experience</div>
+      <div class="experience" id="experience-list"></div>
     </section>
     <!-- Skills & Tools -->
     <section id="tools" class="container">
@@ -375,16 +553,43 @@
       <p class="statement" id="statement">I take ideas from zero to launch, using AI and data to move faster, and love prototyping with AI coding tools.</p>
     </section>
 
-    <!-- Strengths marquee -->
-    <div class="marquee" aria-label="Strengths">
-      <div class="marquee-track" id="marquee"></div>
+    <!-- Things I built: blue band -->
+    <div class="band" id="things-i-built">
+    <!-- Things I built: Kickoff Puzzles -->
+    <section id="featured-project" class="container">
+      <div class="label">Things I built</div>
+      <p class="built-intro reveal">Football puzzles for fans. I made them for my friends first, then they pushed me to go public.</p>
+      <div class="built single">
+        <a class="built-card reveal up" href="https://kickoffpuzzles.com/" target="_blank" rel="noopener">
+          <h3>Kickoff Puzzles</h3>
+          <p>Crosswords and quick games for football fans, in English and Georgian.</p>
+          <div class="built-chips"><span>Crosswords</span><span>Top 5</span><span>Scramble</span><span>Word Search</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Tools I built -->
+    <section id="built" class="container">
+          <p class="built-sub">Tools for creators</p>
+     <p class="built-intro reveal">Tools I build for problems I run into while working with creators and organizations on marketing and monetization. Early versions, still evolving.</p>
+      <div class="built">
+        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/show-ledger/" target="_blank" rel="noopener">
+          <h3>Show Ledger</h3>
+          <p>Track a creator's income and costs by month, quarter and year.</p>
+        </a>
+        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/media-kit/" target="_blank" rel="noopener">
+          <h3>Media Kit</h3>
+          <p>A one-page media kit and rate card creators can download and send to sponsors.</p>
+        </a>
+        <a class="built-card reveal up" href="https://chikhladzesaba.github.io/utm-wizard/" target="_blank" rel="noopener">
+          <h3>UTM Wizard</h3>
+          <p>Build correct UTM links step by step, and learn how they work along the way.</p>
+              </a>
+      </div>
+         <a class="built-hub" href="https://chikhladzesaba.github.io/creator-tools/" target="_blank" rel="noopener">See all creator tools on Creator Desk <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </section>
     </div>
 
-    <!-- Experience -->
-    <section id="experience" class="container">
-      <div class="label">Experience</div>
-      <div class="experience" id="experience-list"></div>
-    </section>
   </main>
 
   <footer>
@@ -396,7 +601,6 @@
           <a class="cta" href="mailto:sabachikhladze@outlook.com">Let's talk
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
           </a>
-          <p class="footer-note">This website counts visits with cookieless analytics.</p>
         </div>
         <div class="footer-links">
           <ul>
@@ -409,17 +613,17 @@
           </a></li></ul>
         </div>
       </div>
-      <p class="footer-bottom">©2026 | Saba Chikhladze <em>Career</em> Highlights</p>
+      <div class="footer-bottom"><p>This website counts visits with cookieless analytics.</p><p>©2026 | Saba Chikhladze Career Highlights</p></div>
     </div>
   </footer>
 
   <script>
     // ---- Data ----
     const expertise = [
-      ["Growth & Marketing Strategy", ["Audience Segmentation", "Go-to-Market Strategy", "Lifecycle Marketing", "Performance Analytics"]],
-      ["Product Strategy & Management", ["Roadmap Planning", "Team Leadership", "User Research & Insights", "Stakeholder Management"]],
+      ["Growth & Marketing Strategy", ["Audience Segmentation", "Experimentation & Testing", "Lifecycle Marketing", "Performance Analytics"]],
+      ["Audience & Retention", ["Content & Channel Strategy", "Community Building", "Paid Social", "Push Notifications & Retention"]],
+      ["Product Management & Go-to-Market", ["Roadmap Planning", "Go-to-Market Strategy", "User Research & Insights", "Stakeholder & Team Leadership"]],
       ["Web Platforms & SEO", ["Website & CMS", "SEO Strategy", "Content Optimization", "Web Analytics"]],
-      ["Audience Development", ["Channel & Content Strategy", "Community Building", "Paid Social", "Push Notifications & Lifecycle"]],
       ["Training & Lectures", ["University Lectures", "Custom Workshops", "Course & Syllabus Design", "Mentoring"]]
     ];
 
@@ -431,9 +635,9 @@
     };
     const strengths = [
       ["bulb", "Curiosity and a constant drive to learn."],
-      ["list", "Diverse Industry & Culture Experience."],
-      ["target", "Focus on practical solutions that get result."],
-      ["chart", "Experience growing brands and online communities"],
+      ["list", "Diverse industry & culture experience."],
+      ["target", "Focus on practical solutions that get results."],
+      ["chart", "Experience growing brands and online communities."],
     ];
 
     const CZ = "🇨🇿 Prague, Czechia", GE = "🇬🇪 Tbilisi, Georgia";
@@ -441,7 +645,7 @@
       { org: "64 Studio", logo: "64-studio.avif", roles: [["Head of Growth & Product Marketing", "2026 - Present", null]] },
       { org: "RFE/RL", logo: "rferl.avif", roles: [
           ["Digital Product Manager", "2023 - 2025", CZ],
-          ["Digital Lead (Chief Digital Editor)", "2018 - 2023", GE]] },
+          ["Head of Digital (Chief Digital Editor)", "2018 - 2023", GE]] },
       { org: "Georgian Institute of Public Affairs (GIPA)", logo: "gipa.avif", roles: [["Lecturer", "2020 - Present", GE]] },
       { org: "Georgian Football Federation", logo: "gff.avif", roles: [
           ["Digital Marketing Consultant", "2017 - 2019", GE],
@@ -451,7 +655,6 @@
     ];
 
     const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
-    const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>';
 
     // ---- Accordion: sub-items are a plain list, open on click ----
     const acc = document.getElementById("accordion");
@@ -472,8 +675,6 @@
       if (open) { item.classList.add("open"); btn.setAttribute("aria-expanded", "true"); }
     });
 
-    // ---- Highlights: add the round arrow that appears on hover ----
-    document.querySelectorAll(".hl-media").forEach(m => m.insertAdjacentHTML("beforeend", `<span class="hl-arrow" aria-hidden="true">${arrow}</span>`));
 
     // ---- Statement: split into letters so they can appear one by one ----
     const st = document.getElementById("statement");
@@ -499,21 +700,16 @@
             <div class="role">
               ${i === 0 ? `<h3>${esc(x.org)}</h3>` : ""}
               <div class="title">${esc(t)}</div>
-              <div class="dates">${d}</div>
-              ${p ? `<div class="place">${p}</div>` : ""}
+              <div class="meta">
+                <div class="dates">${d}</div>
+                ${p ? `<div class="place">${p}</div>` : ""}
+              </div>
             </div>`).join("")}
         </div>
       </div>`).join("");
 
     // ---- Header: hides while scrolling down, comes back when scrolling up ----
-    const header = document.querySelector(".header");
-    let lastY = window.scrollY;
-    window.addEventListener("scroll", () => {
-      const y = window.scrollY;
-      if (y < header.offsetHeight || y < lastY - 2) header.classList.remove("hide");  // near the top, or scrolling up
-      else if (y > lastY) header.classList.add("hide");                                 // scrolling down
-      lastY = y;
-    }, { passive: true });
+
 
     // ---- Section labels fade in too ----
     document.querySelectorAll(".label").forEach(el => el.classList.add("reveal"));
@@ -528,5 +724,58 @@
     }, { threshold: 0.12 });
     document.querySelectorAll(".reveal, .statement").forEach(el => io.observe(el));
   </script>
+
+
+  <script>
+    /* Hero: the blue highlight wipes over the key phrases, left to right, with a smooth ease-out */
+    (function () {
+      var hl = document.querySelectorAll("#overview .hlw"); if (!hl.length) return;
+      var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var t = 0;
+      Array.prototype.forEach.call(hl, function (h, i) {
+        var dur = 350 + h.textContent.length * 45;       // longer word = a bit longer wipe
+        if (!still) h.style.transition = "background-size " + dur + "ms cubic-bezier(.22,.8,.2,1) " + t + "ms, color 200ms ease " + (t + dur * .35) + "ms";
+        t += dur * .6;                                   // next word starts before this one finishes, so it flows
+      });
+      setTimeout(function () { Array.prototype.forEach.call(hl, function (h) { h.classList.add("hl-on"); }); }, still ? 0 : 500);
+    })();
+  </script>
+
+
+  <script>
+    /* Arrow button: points down while there is more to see; at the end of the page it points up and scrolls back to the top */
+    (function () {
+      var cue = document.querySelector(".scroll-cue"); if (!cue) return;
+      function atEnd() { return window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 40; }
+      function update() {
+        var up = atEnd();
+        cue.classList.toggle("up", up);
+        cue.setAttribute("aria-label", up ? "Back to top" : "Scroll down");
+      }
+      window.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
+      update();
+      cue.addEventListener("click", function (e) {
+        if (cue.classList.contains("up")) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+      });
+    })();
+  </script>
+<script>
+  /* About card on touch screens: tap to open, tap elsewhere (or Escape) to close */
+  (function () {
+    var wrap = document.querySelector(".li-wrap"); if (!wrap) return;
+    if (!window.matchMedia("(hover: none)").matches) return;
+    wrap.addEventListener("click", function (e) { e.stopPropagation(); wrap.classList.toggle("open"); });
+    document.addEventListener("click", function () { wrap.classList.remove("open"); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") wrap.classList.remove("open"); });
+    /* Close by itself once you scroll on: main page = when Areas of Expertise comes into view, work pages = after a short scroll */
+    var target = document.getElementById("expertise"), startY = 0;
+    window.addEventListener("scroll", function () {
+      if (!wrap.classList.contains("open")) { startY = window.scrollY; return; }
+      var gone = target ? target.getBoundingClientRect().top <= window.innerHeight * 0.9 : Math.abs(window.scrollY - startY) > 80;
+      if (gone) wrap.classList.remove("open");
+    }, { passive: true });
+  })();
+</script>
 </body>
 </html>
