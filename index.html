@@ -738,10 +738,17 @@
 
 
   <script>
-    /* Arrow button: jumps to Areas of Expertise and hides after the first click */
+    /* Buttons that jump to a section (arrow, Experience, Areas of Expertise): scroll there without putting #section in the web address,
+       otherwise refreshing the page on a phone jumps straight back to that section. The arrow also hides after the first click. */
     (function () {
-      var cue = document.querySelector(".scroll-cue"); if (!cue) return;
-      cue.addEventListener("click", function () { cue.classList.add("gone"); });
+      document.addEventListener("click", function (e) {
+        var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+        var id = a.getAttribute("href").slice(1), el = id && document.getElementById(id); if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView();
+        var cue = a.closest(".scroll-cue"); if (cue) cue.classList.add("gone");
+      });
+      if (location.hash) history.replaceState(null, "", location.pathname + location.search);   /* clean an old #section left in the address */
     })();
   </script>
 <script>
