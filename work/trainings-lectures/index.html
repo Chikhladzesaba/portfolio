@@ -9,7 +9,7 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="Trainings &amp; Lectures | Saba Chikhladze">
   <meta property="og:description" content="150+ trainings and lectures on digital marketing and growth, with practical skills for students and professionals from different countries.">
-  <meta property="og:image" content="https://sabachikhladze.com/images/og-image.png">
+  <meta property="og:image" content="https://sabachikhladze.com/images/og-trainings-lectures.png">
   <meta property="og:url" content="https://sabachikhladze.com/work/trainings-lectures/">
   <link rel="canonical" href="https://sabachikhladze.com/work/trainings-lectures/">
   <meta name="twitter:card" content="summary_large_image">
@@ -17,19 +17,23 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
+    html { overflow-x: clip; }
     /* Case-study page.
        Screen sizes: desktop 1100px and up, tablet 768–1099px, phone under 768px. */
     :root {
-      --ink: #1a1b22;
+      --ink: #dce5f0;       /* main text colour */
+      --dark: #1a1b22;      /* dark background colour */
       --accent: #006aff;
-      --badge: #f7fbff;      /* light blue background (stats box) */
-      --bg: #ffffff;
-      --font-regular: "PP Neue Montreal Regular", "Inter Tight", system-ui, sans-serif;
-      --font-medium: "PP Neue Montreal Medium", "Inter Tight", system-ui, sans-serif;
-      --font-serif: "Tiempos Headline Light Italic", "Instrument Serif", Georgia, serif;
+      --badge: rgba(0, 106, 255, .16);      /* light blue background (stats box) */
+      --border: rgba(233, 242, 253, .18);     /* light blue borders on boxes */
+      --line: rgba(233, 242, 253, .14);       /* divider lines */
+      --bg: #1a1b22;
+      --font-regular: "Google Sans Code", ui-monospace, monospace;
+      --font-medium: "Google Sans Code", ui-monospace, monospace;
+      --font-serif: "Google Sans Code", ui-monospace, monospace;
       --max: 1800px;         /* width of the content */
       --text-max: 1200px;    /* width of the text blocks */
       --gutter: 80px;        /* space at the screen edges */
@@ -37,9 +41,10 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    h1, h2, h3, h4, h5, h6, strong, b, th, dt { font-weight: 400; }
     body {
       background: var(--bg); color: var(--ink); font-family: var(--font-regular);
-      font-size: 18px; line-height: 1.1; letter-spacing: -.01em;
+      font-size: 13px; line-height: 1.1; letter-spacing: -.01em;
       -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
     a { color: inherit; text-decoration: none; }
@@ -48,11 +53,10 @@
 
     /* ---------- Header (hides while scrolling down, comes back when scrolling up) ---------- */
     .header { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--ink); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-    .header.hide { transform: translateY(-100%); }
     .header .container { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; padding-bottom: 24px; }
-    .brand { display: flex; gap: 14px; align-items: baseline; font-size: 20px; }
-    .brand em { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
-    .pill { background: var(--ink); color: #fff; border-radius: 999px; padding: 8px 16px; transition: transform .2s ease; }
+    .brand { display: flex; gap: 14px; align-items: baseline; font-size: 15px; }
+    .brand em { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
+    .pill { background: var(--accent); color: #fff; border-radius: 999px; padding: 8px 16px; transition: transform .2s ease; }
     .pill:hover { transform: scale(1.05); }
 
     /* ---------- Page content ---------- */
@@ -61,32 +65,33 @@
     .intro { max-width: 800px; display: grid; gap: 80px; }
     .facts { display: flex; gap: 120px; }
     .facts div { display: grid; gap: 8px; }
-    .facts dd { font-family: var(--font-medium); font-weight: 500; }
-    h1 { font-family: var(--font-medium); font-weight: 500; font-size: 64px; }
+    .facts dd { font-family: var(--font-medium); font-weight: 400; }
+    h1 { font-family: var(--font-medium); font-weight: 400; font-size: 48px; }
 
-    .hero { border-radius: 24px; overflow: hidden; height: 900px; position: relative; }
+    .hero { border-radius: 24px; overflow: hidden; height: 450px; position: relative; margin-top: calc(var(--block-gap) / -2); }
     .hero img { position: absolute; left: -5%; top: -5%; width: 110%; height: 110%; max-width: none; object-fit: cover; will-change: transform; }
 
-    .text { max-width: var(--text-max); margin: 0 auto; width: 100%; display: grid; gap: 48px; }
-    .text p { font-size: 24px; white-space: pre-wrap; }
-    .text h2 { font-family: var(--font-medium); font-weight: 500; font-size: 32px; }
+    .text { max-width: var(--text-max); margin: 0 auto; width: 100%; display: grid; gap: 32px; }
+    .text p { font-size: 18px; line-height: 1.6; white-space: pre-wrap; }
+    .hero + .text, .text + .text { margin-top: calc(var(--block-gap) / -2); }
+    .text h2 { font-family: var(--font-medium); font-weight: 400; font-size: 24px; text-transform: uppercase; letter-spacing: .04em; }
 
     .btn {
       display: inline-flex; align-items: center; gap: 8px; justify-self: start;
-      background: #f0f0f0; color: var(--ink); padding: 16px 32px; border-radius: 64px;
-      font-family: var(--font-medium); font-weight: 500; transition: transform .2s ease, background .2s ease;
+      background: #fff; color: var(--dark); padding: 16px 32px; border-radius: 64px;
+      font-family: var(--font-medium); font-weight: 400; transition: transform .2s ease, background .2s ease;
     }
-    .btn:hover { transform: translateY(-2px); background: #e3e3e3; }
+    .btn:hover { transform: translateY(-2px); background: #e9f2fd; }
     .btn svg { width: 16px; height: 16px; }
     .gallery { display: grid; gap: 40px; }
     .photo { border-radius: 24px; overflow: hidden; height: 800px; position: relative; }
     .photo img { position: absolute; left: -5%; top: -5%; width: 110%; height: 110%; max-width: none; object-fit: cover; }
 
-    .stats { background: var(--badge); border-radius: 30px; padding: 80px 20px; }
+    .stats { background: var(--accent); color: #fff; border-radius: 30px; padding: 80px 20px; }
     .stats-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: center; }
     .stat { display: grid; gap: 10px; }
-    .stat p { font-size: 22px; }
-    .stat strong { font-family: var(--font-medium); font-weight: 500; font-size: 64px; }
+    .stat p { font-size: 17px; }
+    .stat strong { font-family: var(--font-medium); font-weight: 400; font-size: 48px; }
 
     /* ---------- Footer (same as homepage) ---------- */
     /* Photo strip (moves slowly, pauses on hover) */
@@ -96,22 +101,22 @@
     .carousel img { height: 340px; width: auto; max-width: none; border-radius: 20px; flex: none; }
     @keyframes scroll { to { transform: translateX(calc(-50% - 10px)); } }
 
-    footer { background: var(--ink); color: #fff; margin-top: 240px; }
-    footer .container { min-height: 720px; padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; justify-content: space-between; gap: 80px; }
+    footer { background: var(--bg); border-top: 1px solid var(--line); color: var(--ink); margin-top: 240px; }
+    footer .container { min-height: 692px; padding-top: 80px; padding-bottom: 112px; display: flex; flex-direction: column; justify-content: space-between; gap: 112px; }
     .footer-top { display: flex; justify-content: space-between; gap: 40px; }
     .footer-top .kicker { margin-bottom: 16px; }
-    .footer-top h2 { font-family: var(--font-medium); font-weight: 500; font-size: 40px; }
+    .footer-top h2 { font-family: var(--font-medium); font-weight: 400; font-size: 30px; }
     .cta {
       display: inline-flex; align-items: center; gap: 8px; margin-top: 64px;
-      background: #fff; color: var(--ink); padding: 10px 18px; border-radius: 999px;
-      font-family: var(--font-medium); font-weight: 500; transition: transform .2s ease;
+      background: #fff; color: var(--dark); padding: 10px 18px; border-radius: 999px;
+      font-family: var(--font-medium); font-weight: 400; transition: transform .2s ease;
     }
     .cta:hover { transform: translateY(-2px); }
-    .footer-links { display: flex; gap: 24px 60px; font-family: var(--font-medium); font-weight: 500; }
+    .footer-links { display: flex; gap: 24px 60px; font-family: var(--font-medium); font-weight: 400; }
     .footer-links ul { list-style: none; display: grid; gap: 10px; align-content: start; }
     .footer-links a { opacity: .6; transition: opacity .2s ease; }
     .footer-links a:hover { opacity: 1; }
-    .footer-bottom { color: #8b8d96; }
+    .footer-bottom { color: rgba(220, 229, 240, .62); }
     .footer-bottom em { font-family: var(--font-serif); }
 
     /* ---------- Scroll animations ----------
@@ -127,15 +132,15 @@
     /* ---------- Tablet ---------- */
     @media (max-width: 1099px) {
       :root { --gutter: 64px; --block-gap: 120px; }
-      h1 { font-size: 52px; }
-      .hero { height: 600px; }
+      h1 { font-size: 39px; }
+      .hero { height: 300px; }
       .photo { height: 500px; }
-      .text p { font-size: 22px; }
-      .text h2 { font-size: 26px; }
-      .stat strong { font-size: 52px; }
+      .text p { font-size: 17px; }
+      .text h2 { font-size: 19px; }
+      .stat strong { font-size: 39px; }
       .footer-top { flex-direction: column; }
       footer { margin-top: 160px; }
-      footer .container { min-height: 0; padding-top: 64px; padding-bottom: 64px; }
+      footer .container { min-height: 0; padding-top: 64px; padding-bottom: 90px; }
     }
 
     /* ---------- Phone ---------- */
@@ -143,41 +148,111 @@
       :root { --gutter: 16px; --block-gap: 80px; }
       main.container { padding-top: 120px; }
       .header .container { padding-top: 16px; padding-bottom: 16px; }
-      .brand { font-size: 16px; gap: 8px; }
-      .pill { font-size: 16px; padding: 6px 14px; }
+      .brand { font-size: 12px; gap: 8px; }
+      .pill { font-size: 12px; padding: 6px 14px; }
       .intro { gap: 48px; }
       .facts { flex-direction: column; gap: 12px; }
       .facts div { display: flex; justify-content: space-between; }
-      h1 { font-size: 32px; }
-      .hero { height: 350px; border-radius: 12px; }
+      h1 { font-size: 24px; }
+      .hero { height: 175px; border-radius: 12px; }
       .photo { height: 250px; border-radius: 12px; }
       .gallery { gap: 16px; }
-      .text p { font-size: 20px; }
-      .text h2 { font-size: 22px; }
+      .text p { font-size: 15px; }
+      .text h2 { font-size: 17px; }
       .stats { padding: 48px 16px; }
       .carousel img { height: 200px; }
       .stats-inner { grid-template-columns: 1fr; }
-      .stat strong { font-size: 40px; }
+      .stat strong { font-size: 30px; }
       .footer-links { flex-wrap: wrap; }
-      footer .container { padding-top: 48px; padding-bottom: 48px; }
+      footer .container { padding-top: 48px; padding-bottom: 67px; }
     }
+  
+    /* ---------- Uppercase small UI text (buttons and footer links) ---------- */
+    .pill, .btn, .cta, .footer-links a { text-transform: uppercase; letter-spacing: .04em; font-weight: 500; }
+    .facts dt, .stat p, .kicker { text-transform: uppercase; letter-spacing: .04em; font-weight: 500; }
+    h1 { text-transform: uppercase; letter-spacing: -.02em; line-height: 1.15; }
+  
+    /* ---------- Button sizes (same everywhere) ----------
+       Text buttons: LinkedIn pill, "Let's talk", "Beer Georgia" link  -> 40px high, 13px text
+       Shape (icon) buttons: round arrow badges                          -> 40px circle, 16px arrow */
+    :root { --btn-h: 40px; --btn-px: 20px; --btn-fs: 13px; --icon-btn: 40px; --icon-btn-icon: 16px; }
+    .pill, .cta, .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      height: var(--btn-h); padding: 0 var(--btn-px); font-size: var(--btn-fs); line-height: 1;
+      border-radius: 999px;
+    }
+    .cta svg, .btn svg { width: var(--icon-btn-icon); height: var(--icon-btn-icon); }
+      /* Header brand: name + role, two lines */
+    .brand { align-items: flex-start; }
+    .who-brand { display: grid; gap: 4px; }
+    .role-brand { font-size: 13px; color: rgba(220, 229, 240, .62); }
+      /* ---------- TRY: square corners everywhere (delete this block to go back) ---------- */
+    *, *::before, *::after { border-radius: 0 !important; }
+  
+  
+    /* LinkedIn hover preview: small profile card under the button */
+    .li-wrap { position: relative; display: inline-block; }
+    .li-card {
+      position: absolute; top: calc(100% + 10px); right: 0; z-index: 60; width: max-content; max-width: 300px;
+      display: flex; align-items: center; gap: 12px; padding: 12px 16px 12px 12px;
+      background: #23242c; border: 1px solid var(--border); color: var(--ink);
+      opacity: 0; visibility: hidden; transform: translateY(-6px); pointer-events: none;
+      transition: opacity .25s cubic-bezier(.22,.8,.2,1), transform .25s cubic-bezier(.22,.8,.2,1), visibility 0s linear .25s;
+    }
+    .li-ph { width: 48px; height: 48px; overflow: hidden; flex: none; display: block; margin: 0; }
+    .li-card img { width: 150px; max-width: none; height: auto; margin: -14px 0 0 -49px; display: block; }
+    .li-card strong { display: block; font-size: 14px; font-weight: 500; }
+    .li-card .li-txt span { display: block; font-size: 12px; color: rgba(220, 229, 240, .62); margin-top: 2px; }
+    @media (hover: hover) {
+      .li-wrap:hover .li-card, .li-wrap:focus-within .li-card { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+    }
+    /* Touch screens: tap About to open the card, tap anywhere else to close it */
+    .li-wrap.open .li-card { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+  
+    /* Header: "About" button with a photo preview on hover */
+    .header-actions { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+    .li-card.li-photo { padding: 8px; }
+    .li-card.li-photo img { width: 240px; height: auto; margin: 0; display: block; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  
+    /* About button: outline style, hover card with photo + name */
+    .pill.outline { background: transparent; color: var(--ink); border: 1px solid var(--border); transition: border-color .2s ease, color .2s ease, transform .2s ease; }
+    .pill.outline:hover { border-color: var(--accent); color: var(--accent); }
+    .li-wrap.left .li-card { left: 0; right: auto; }
+    .pill.outline { cursor: default; }
+    .li-card { flex-direction: column; align-items: stretch; gap: 12px; width: 342px; max-width: calc(100vw - 32px); padding: 12px; }
+    .li-head { display: flex; align-items: center; gap: 12px; }
+    .li-bio { margin: 0; font-size: 12px; line-height: 1.55; color: rgb(220 229 240 / .8); }
+  
+    /* About preview: photo on the left, all text on the right */
+    .li-card { flex-direction: row; align-items: stretch; gap: 16px; width: 430px; }
+    .li-card .li-ph { width: 112px; height: auto; align-self: stretch; }
+    .li-card .li-ph img { width: 100%; height: 100%; margin: 0; object-fit: cover; object-position: 70% 40%; }
+    .li-body { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+    .li-body .li-bio { margin-top: 10px; }
+  
+    /* Footer bottom line: analytics note on the left, copyright on the right */
+    .footer-bottom { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 24px; flex-wrap: wrap; font-size: 12px; }
+    .footer-bottom p { margin: 0; }
+  
+    /* Header has no background; the About button gets a solid one instead */
+    .pill.outline { background: var(--bg); }
   </style>
 </head>
 <body>
 
   <header class="header">
     <div class="container">
-      <a href="/" class="brand"><span><em>Career</em> highlights</span><span>©2026</span></a>
+      <div class="li-wrap left">
+          <span class="pill outline" tabindex="0">About</span>
+          <div class="li-card" aria-hidden="true"><span class="li-ph"><img src="/images/saba.avif" alt=""></span><div class="li-body"><div class="li-txt"><strong>Saba Chikhladze</strong><span>Growth &amp; Product Marketing</span></div><p class="li-bio">10+ years in marketing and product. Driving growth. Building engaged audiences. Taking products to market. From Tbilisi, Georgia. Working worldwide.</p></div></div>
+      </div>
       <a class="pill" href="https://www.linkedin.com/in/sabachikhladze/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </header>
 
   <main class="container">
     <div class="intro">
-      <dl class="facts reveal">
-        <div><dt>Industry</dt><dd>Education</dd></div>
-        <div><dt>Objective</dt><dd>Skill Sharing</dd></div>
-      </dl>
       <h1 class="reveal">Trainings &amp; Lectures</h1>
     </div>
 
@@ -221,20 +296,13 @@ I was invited to lecture at universities, training centers, and various internat
           <ul><li><a href="https://www.linkedin.com/in/sabachikhladze/" target="_blank" rel="noopener">LinkedIn</a></li></ul>
         </div>
       </div>
-      <p class="footer-bottom">©2026 | Saba Chikhladze <em>Career</em> Highlights</p>
+      <div class="footer-bottom"><p>This website counts visits with cookieless analytics.</p><p>©2026 | Saba Chikhladze Career Highlights</p></div>
     </div>
   </footer>
 
   <script>
     // ---- Header: hides while scrolling down, comes back when scrolling up ----
-    const header = document.querySelector(".header");
-    let lastY = window.scrollY;
-    window.addEventListener("scroll", () => {
-      const y = window.scrollY;
-      if (y < header.offsetHeight || y < lastY - 2) header.classList.remove("hide");  // near the top, or scrolling up
-      else if (y > lastY) header.classList.add("hide");                                 // scrolling down
-      lastY = y;
-    }, { passive: true });
+
 
     // ---- Big images: move slightly slower than the page (parallax) ----
     const bigImages = document.querySelectorAll(".hero img, .photo img");
@@ -254,5 +322,23 @@ I was invited to lecture at universities, training centers, and various internat
     }, { threshold: 0.12 });
     document.querySelectorAll(".reveal").forEach(el => io.observe(el));
   </script>
+
+<script>
+  /* About card on touch screens: tap to open, tap elsewhere (or Escape) to close */
+  (function () {
+    var wrap = document.querySelector(".li-wrap"); if (!wrap) return;
+    if (!window.matchMedia("(hover: none)").matches) return;
+    wrap.addEventListener("click", function (e) { e.stopPropagation(); wrap.classList.toggle("open"); });
+    document.addEventListener("click", function () { wrap.classList.remove("open"); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") wrap.classList.remove("open"); });
+    /* Close by itself once you scroll on: main page = when Areas of Expertise comes into view, work pages = after a short scroll */
+    var target = document.getElementById("expertise"), startY = 0;
+    window.addEventListener("scroll", function () {
+      if (!wrap.classList.contains("open")) { startY = window.scrollY; return; }
+      var gone = target ? target.getBoundingClientRect().top <= window.innerHeight * 0.9 : Math.abs(window.scrollY - startY) > 80;
+      if (gone) wrap.classList.remove("open");
+    }, { passive: true });
+  })();
+</script>
 </body>
 </html>
