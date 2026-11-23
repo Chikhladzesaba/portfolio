@@ -167,7 +167,7 @@
     /* ---------- Strengths (moving strip) ---------- */
     .marquee { overflow: hidden; margin-top: 160px; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
     .marquee-track { display: flex; gap: 16px; width: max-content; animation: marquee 40s linear infinite; }
-    .marquee:hover .marquee-track { animation-play-state: paused; }
+    @media (hover: hover) { .marquee:hover .marquee-track { animation-play-state: paused; } }
     @keyframes marquee { to { transform: translateX(calc(-50% - 8px)); } }
     .strength {
       width: 400px; height: 232px; flex: none;
@@ -492,11 +492,6 @@
       <div class="overview-card reveal">
         <p class="lead">I take <span class="hlw">products to market</span>, grow audiences and keep users <span class="hlw">coming back</span>.</p>
       </div>
-      <a class="scroll-cue" href="#expertise" aria-label="Scroll down"><span class="cue-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a>
-      <div class="hero-links">
-        <a class="pill outline" href="#experience">Experience</a>
-        <a class="pill outline" href="#expertise">Areas of Expertise</a>
-      </div>
     </section>
 
     <!-- Strengths marquee -->
@@ -591,6 +586,13 @@
     </div>
 
   </main>
+
+  <!-- Fixed buttons: arrow (next section / back to top) and shortcuts -->
+  <a class="scroll-cue" href="#expertise" aria-label="Scroll down"><span class="cue-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg></span></a>
+  <div class="hero-links">
+    <a class="pill outline" href="#experience">Experience</a>
+    <a class="pill outline" href="#expertise">Areas of Expertise</a>
+  </div>
 
   <footer>
     <div class="container">
@@ -750,13 +752,25 @@
       function update() {
         var up = atEnd();
         cue.classList.toggle("up", up);
-        cue.setAttribute("aria-label", up ? "Back to top" : "Scroll down");
+        cue.setAttribute("aria-label", up ? "Back to top" : "Next section");
       }
       window.addEventListener("scroll", update, { passive: true });
       window.addEventListener("resize", update);
       update();
+      var stops = ["#expertise", "#highlights", "#experience", "#tools", "#things-i-built", "footer"];
+      function nextTop() {
+        for (var i = 0; i < stops.length; i++) {
+          var el = document.querySelector(stops[i]); if (!el) continue;
+          var top = el.getBoundingClientRect().top;
+          if (top > 140) return Math.max(0, window.scrollY + top - 90);
+        }
+        return null;
+      }
       cue.addEventListener("click", function (e) {
-        if (cue.classList.contains("up")) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+        e.preventDefault();
+        if (cue.classList.contains("up")) { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+        var y = nextTop();
+        window.scrollTo({ top: y === null ? document.documentElement.scrollHeight : y, behavior: "smooth" });
       });
     })();
   </script>
